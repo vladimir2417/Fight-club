@@ -1,0 +1,10 @@
+﻿
+@if (ViewBag.EMailKluba != null)
+{
+    foreach (var stavka in ViewBag.EMailKluba)
+    {
+        @stavka.ToString();
+    }
+    //string email = ViewBag.EMailKluba.ToString();
+}
+

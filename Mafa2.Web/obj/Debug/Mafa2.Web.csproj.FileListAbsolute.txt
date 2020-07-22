@@ -1,0 +1,235 @@
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Mafa2.Web.dll.config
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Mafa2.Web.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Mafa2.Web.pdb
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\csc.exe
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\csc.exe.config
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\csc.rsp
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\csi.exe
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\csi.exe.config
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\csi.rsp
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Managed.Core.targets
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.AppContext.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Collections.Immutable.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Console.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Globalization.Calendars.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.IO.Compression.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.IO.FileSystem.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Net.Http.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Net.Sockets.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Reflection.Metadata.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.ValueTuple.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XmlDocument.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XPath.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\vbc.exe
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\vbc.exe.config
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\vbc.rsp
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\VBCSCompiler.exe
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\roslyn\VBCSCompiler.exe.config
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Antlr3.Runtime.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Microsoft.Web.Infrastructure.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Newtonsoft.Json.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.Helpers.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.Mvc.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.Optimization.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.Razor.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Deployment.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.WebPages.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Razor.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\WebGrease.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.Helpers.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.Mvc.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.Optimization.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.Razor.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.WebPages.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Deployment.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Razor.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Newtonsoft.Json.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Antlr3.Runtime.pdb
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.csproj.CopyComplete
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.dll
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.pdb
+E:\ITS\3. GODINA\5. SEMESTAR\PPP\PROJEKAT\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.csprojAssemblyReference.cache
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Mafa2.Web.dll.config
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Mafa2.Web.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Mafa2.Web.pdb
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\csc.exe
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\csc.exe.config
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\csc.rsp
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\csi.exe
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\csi.exe.config
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\csi.rsp
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.AppContext.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Console.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.IO.Compression.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Net.Http.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.ValueTuple.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\vbc.exe
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\vbc.exe.config
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\vbc.rsp
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\VBCSCompiler.exe
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Antlr3.Runtime.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Newtonsoft.Json.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.Helpers.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.Mvc.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.Optimization.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.Razor.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.WebPages.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Razor.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\WebGrease.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.Helpers.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.Mvc.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.Optimization.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.Razor.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.WebPages.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Razor.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Newtonsoft.Json.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Antlr3.Runtime.pdb
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.csprojAssemblyReference.cache
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.csproj.CopyComplete
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.dll
+C:\Users\Korisnik\Desktop\PPP Projekat - Fight Club\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.pdb
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Mafa2.Web.dll.config
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Mafa2.Web.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Mafa2.Web.pdb
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\csc.exe
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\csc.exe.config
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\csc.rsp
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\csi.exe
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\csi.exe.config
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\csi.rsp
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.AppContext.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Console.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.IO.Compression.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Net.Http.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Net.Sockets.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.ValueTuple.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XPath.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\vbc.exe
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\vbc.exe.config
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\vbc.rsp
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\VBCSCompiler.exe
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Antlr3.Runtime.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Newtonsoft.Json.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.Helpers.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.Mvc.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.Optimization.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.Razor.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Deployment.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.WebPages.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Razor.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\WebGrease.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.Helpers.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.Mvc.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.Optimization.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.Razor.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.WebPages.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Deployment.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\System.Web.WebPages.Razor.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Newtonsoft.Json.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Antlr3.Runtime.pdb
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.csprojAssemblyReference.cache
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.csproj.CoreCompileInputs.cache
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.csproj.CopyComplete
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.dll
+C:\Users\bosko\Desktop\Mafa2\Mafa2.Web\obj\Debug\Mafa2.Web.pdb

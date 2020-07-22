@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafa2.Web", "Mafa2.Web\Mafa2.Web.csproj", "{AAC09DC9-F5FE-45C9-93C8-C16CC32AACFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafa2.Web.Tests", "Mafa2.Web.Tests\Mafa2.Web.Tests.csproj", "{FC568470-B885-4A2E-B192-BCCAE40C407F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAC09DC9-F5FE-45C9-93C8-C16CC32AACFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC09DC9-F5FE-45C9-93C8-C16CC32AACFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC09DC9-F5FE-45C9-93C8-C16CC32AACFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC09DC9-F5FE-45C9-93C8-C16CC32AACFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC568470-B885-4A2E-B192-BCCAE40C407F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC568470-B885-4A2E-B192-BCCAE40C407F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC568470-B885-4A2E-B192-BCCAE40C407F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC568470-B885-4A2E-B192-BCCAE40C407F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6375F55-F441-4493-84CB-08BCC8920F76}
+	EndGlobalSection
+EndGlobal

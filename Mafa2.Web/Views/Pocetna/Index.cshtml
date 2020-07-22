@@ -1,0 +1,190 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    <div class="container-fluid">
+        <div class="background">
+            <div class="page-header">
+                <h1><a href="/Pocetna/Index"><img src="~/Content/img/borac2.jpg" width="1110" alt="log firme |Martial Arts Fighting Area"></a></h1>
+            </div>
+        </div>
+
+        @Html.Partial("navBarKorisnik") @*navigacioni bar za korisnika*@
+
+
+        <div class="row">
+            <!--POČETAK REDA  -->
+            <div class="col-md-6">
+                <div class="jumbotron">
+                    <h2>Pravila igre</h2>
+
+                    <p>Zainteresovani korisnici se prijavljuju za borbu. Administrator  ugovaranja borbi svakodnevno ....</p>
+                    <p><a class="btn btn-danger btn-lg" href="/Pocetna/Index" role="button">Prikaži više <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="jumbotron">
+                    <h2>Akcije</h2>
+                    <p>Svakom stotom borcu džabe tabanje ....Od sada možete kupiti i dukseve sa našim logom....</p>
+                    <p><a class="btn btn-danger btn-lg" href="/Pocetna/Index" role="button">Prikaži više <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
+                </div>
+            </div>
+        </div> <!--KRAJ REDA-->
+        <!--POČETAK DIJELA PRODAVNICE-->
+        <form class="prodavnica" id="proizvodi">
+            <div class="row">
+                <!--POČETAK THUMBNAILOVA-->
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="~/Content/img/duks.jpg" alt="Duksevi |Martial Arts Fighting Area">
+                        <div class="caption">
+                            <h3>Duksevi</h3>
+                            <p>Kvalitetni duksevi proizvođača Adidas, Lonsdale...</p>
+                            <p>Cijena Adidas muskog duksa na slici: <strong>35</strong><span class="glyphicon glyphicon-euro" arra-hidden="true"></span></p>
+                            <label for="duks1"></label><input type="text" id="1" size="3" placeholder="0">
+                            <br /><br />
+                            <p><a href="/Pocetna/Index" class="btn btn-danger" role="button">Prikaži više<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="~/Content/img/majica.jpg" alt="Majice |Martial Arts Fighting Area">
+                        <div class="caption">
+                            <h3>Majice</h3>
+                            <p>Majice svih veličina, sa boxing printovima ...</p>
+                            <p>Cijena Boxing majice na slici: <strong>12</strong><span class="glyphicon glyphicon-euro" arra-hidden="true"></span></p>
+                            <label for="majica1"></label><input type="text" id="2" size="3" placeholder="0">
+                            <br /><br />
+                            <p><a href="/Pocetna/Index" class="btn btn-danger" role="button">Prikaži više<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="~/Content/img/patike.JPEG" alt="Patike |Martial Arts Fighting Area">
+                        <div class="caption">
+                            <h3>Patike</h3>
+                            <p>Patike muške i ženske, veličina od 36-48... </p>
+                            <p>Cijena patika za box na slici: <strong>122</strong><span class="glyphicon glyphicon-euro" arra-hidden="true"></span></p>
+                            <label for="patike1"></label><input type="text" id="3" size="3" placeholder="0">
+                            <br /><br />
+                            <p><a href="/Pocetna/Index" class="btn btn-danger" role="button">Prikaži više<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a> </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!--KRAJ THUMBNEJLOVA-->
+
+            <div class="row">
+                <!--POČETAK THUMBNAILOVA 2. red-->
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="~/Content/img/rukavice2.jpg" alt="Rukavice |Martial Arts Fighting Area">
+                        <div class="caption">
+                            <h3>Rukavice</h3>
+                            <p>Rukavice za trening, borbu, box, kick-box...</p>
+                            <p>Cijena rukavica za sparing/trening na slici: <strong>65</strong><span class="glyphicon glyphicon-euro" arra-hidden="true"></span></p>
+                            <label for="rukavice1"></label><input type="text" id="4" size="3" placeholder="0">
+                            <br /><br />
+                            <p><a href="/Pocetna/Index" class="btn btn-danger" role="button">Prikaži više<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="~/Content/img/glava1.jpg" alt="Majice |Martial Arts Fighting Area">
+                        <div class="caption">
+                            <h3>Štitnici za glavu</h3>
+                            <p>Štitnici za glavu svih veličina...</p>
+                            <p>Cijena štitnika za glavu na slici: <strong>85</strong><span class="glyphicon glyphicon-euro" arra-hidden="true"></span></p>
+                            <label for="glava1"></label><input type="text" id="5" size="3" placeholder="0">
+                            <br /><br />
+                            <p><a href="/Pocetna/Index" class="btn btn-danger" role="button">Prikaži više<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="~/Content/img/zubi1.jpg" alt="Patike |Martial Arts Fighting Area">
+                        <div class="caption">
+                            <h3>Štitnici za zube</h3>
+                            <p>Kvalitetini štitnici proizvođača Wilson i Under Armour... </p>
+                            <p>Cijena štitnika za zube na slici: <strong>65</strong><span class="glyphicon glyphicon-euro" arra-hidden="true"></span></p>
+                            <label for="zubi1"></label><input type="text" id="6" size="3" placeholder="0">
+                            <br /><br />
+                            <p><a href="/Pocetna/Index" class="btn btn-danger" role="button">Prikaži više<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></a> </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!--KRAJ THUMBNEJLOVA 2. red-->
+        </form>
+        <footer>
+            <div class="row">
+                <!--POČETAK GORNJEG DIJELA FOOTERA-->
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>O nama</b></h4>
+
+                    </div>
+                    <p>M.A.F.A. je na prvom mestu posrednik između zainteresovanih korisnika aplikacije, oba pola,  koji žele da deo svog slobodnog vremena provedu u ringu sa drugim, uparenim korisnicima aplikacije koji su pristali na borbu i sportskih/borilačkih klubova koji trebaju da pruže uslugu prostora za borbu, sudije i medicinskog osoblja.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Kontakt</b></h4>
+
+                    </div>
+                    <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                    <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Pratite nas na:</b></h4>
+                    </div>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-facebook fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-twitter fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-youtube fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-linkedin-in fa-3x"></i>
+                    </a>
+
+                </div>
+            </div><!--KRAJ GORNJEG DIJELA FOOTERA-->
+            <div class="panel-footer">
+                <!--POČETAK DONJEG DIJELA FOTERA-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li><a href="/Pocetna/Index">O nama</a></li>
+                            <li><a href="#">Uslovi korišćenja</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="/Pocetna/Index">Kontakt</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-right">Copyright &copy; 2019 Mladen Zvjerac &#169;</p>
+                    </div>
+
+                </div>
+            </div><!--POČETAK DONJEG DIJELA FOTERA-->
+        </footer>
+    </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+
+

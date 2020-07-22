@@ -1,0 +1,69 @@
+﻿@model Mafa2.Web.Models.NarudzbenicaBO
+
+@{
+    ViewBag.Title = "BrisiNarudzbenicu2";
+}
+
+<h2>Brisanje narudzbenice</h2>
+
+<h3>Da li ste sigurni da zelite da obrisete narudzbenicu?</h3>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("ID narudzbenice:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDNarudzbenice)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Datum i vreme:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumVreme)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Adresa za isporuku:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdresaZaIsporuku)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Grad:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grad)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Zip kod:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Ukupna cena:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalCena)
+        </dd>
+
+    </dl>
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("Obrisi", "BrisiNarudzbenicu", new { IDNar = Model.IDNarudzbenice }) |
+        @Html.ActionLink("Nazad", "PrikazNarudzbenice")
+    </div>
+</div>

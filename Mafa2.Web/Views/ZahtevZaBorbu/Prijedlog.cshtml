@@ -1,0 +1,1032 @@
+﻿@model Mafa2.Web.Models.ZahteviZaBorbuViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    ViewBag.Title = "Kategorija";
+}
+
+<style>
+    .error {
+        color: darkred;
+    }
+    /*#prihvatio{color:darkgreen;}*/
+    #detaljiZahteva {
+        height: 363px;
+        overflow: auto;
+        padding: 3px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="background">
+        <div class="page-header">
+            <h1><a href="/ZahtevZaBorbu/Index"><img src="~/Content/img/borac2.jpg" alt="log firme |Martial Arts Fighting Area"></a></h1>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/ZahtevZaBorbu/Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Početna strana</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <li><a href="/ZahtevZaBorbu/Index">Aktivni zahtjevi</a></li>
+                    <li><a href="/ZahtevZaBorbu/Prijedlog">Kreiranje predloga</a></li>
+                    <li><a href="/Rezervacija/Rezervacija">Rezervacija kluba</a></li>
+                    <li><a href="/Potvrde/Potvrde">Slanje potvrda</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("LogOut", "Pocetna")" onclick="return confirm('Da li ste sigurni da želite da se odjavite?');">Odjavite se</a></li>
+                </ul>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+    @if (Session["mail"] != null)
+    {
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Uspjeh!</strong> Uspješno ste poslali emejl!
+        </div>
+
+        Session["mail"] = null;
+    }
+
+    @if (Session["greskaMail"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Greška!</strong> @Session["greskaMail"]
+        </div>
+
+        Session["greskaMail"] = null;
+    }
+
+
+    @if (Session["prijedlog"] != null)
+    {
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Uspjeh!</strong> Uspješno ste napunili bazu sa prijedlogom borbe!
+        </div>
+
+        Session["prijedlog"] = null;
+    }
+
+    @if (Session["greskaBaza1"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Greška!</strong> @Session["greskaBaza1"]
+        </div>
+
+        Session["greskaBaza1"] = null;
+    }
+    <!--UPARIVANJE-->
+    @*@using (Html.BeginForm("PunjenjePrijedlogaZaBorbu", "ZahtevZaBorbu", FormMethod.Post, new { id = "frmPR", name = "PR" }))
+        {*@
+    <div class="row">
+        <!--POČETAK THUMBNAILOVA-->
+        <div class="col-md-12 container-fluid">
+            <div class="thumbnail">
+
+                <div class="caption">
+                    <h3>Uparivanje</h3>
+                    <br />
+                    <div class="row1">
+                        <p>Filtrirani zahtjevi za borbu: </p>
+                        <div class="col-md-4 container-fluid" id="detaljiZahteva">
+
+                            <table class="table table-responsive table-condensed" border="1">
+
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Datum</th>
+                                    <th>Mesto</th>
+                                    <th>Tip borbe</th>
+                                </tr>
+
+                                @if (ViewBag.ListaZahtjeva2 != null)
+                                {
+                                    foreach (var zzB in ViewBag.ListaZahtjeva2)
+                                    {
+                                        <tr id="row_@zzB.IDZahtevaKorisnika">
+                                            <td><h5>@zzB.IDZahtevaKorisnika</h5></td>
+                                            <td><h5>@zzB.ZahtevaniDatum</h5></td>
+                                            <td><h5>@zzB.ZahtevanoMesto</h5></td>
+                                            <td><h5>@zzB.tipBorbe</h5></td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+
+                        @*@using (Ajax.BeginForm("popuniBorce", "ZahtevZaBorbu", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "tezinskaKategorija" }))*@
+                        @using (Html.BeginForm("popuniBorce", "ZahtevZaBorbu", FormMethod.Post, new { id = "frmBorci" }))
+                        {
+                            <div class="list-group col-md-3">
+                                <p>Kriterijumi uparivanja: </p>
+
+                                <div class="form-group">
+                                    <label for="dropTezKategorija">Težinska kategorija</label>
+                                    @Html.DropDownListFor(model => model.tezinskaKategorija, ViewBag.listaKategorija as SelectList, "---Izaberite kategoriju---", new { @class = "form-control", required = "required", id = "tezinskaKategorija", name = "tezinskaKategorija" })
+                                    @Html.ValidationMessageFor(model => model.tezinskaKategorija, "", new { @class = "error" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dropTipBorbe">Tip borbe</label>
+                                    @Html.DropDownListFor(model => model.tipBorbe, ViewBag.tipoviBorbi as SelectList, "---Izaberite tip borbe---", new { @class = "form-control", id = "tipBorbe", name = "tipBorbe", required = "required" })
+                                    @Html.ValidationMessageFor(model => model.tipBorbe, "", new { @class = "error" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dropGrad">Grad</label>
+                                    @Html.DropDownList("grad", ViewBag.gradoviIzZahteva as SelectList, "---Izaberite grad---", new { @class = "form-control", required = "required", name = "grad", id = "grad" })
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dropSKlub">Izaberi Klub</label>
+                                    @Html.DropDownListFor(m => m.IDSportskoBorilačkogKluba, new SelectList(""), "---ID kluba---", new { @class = "form-control", required = "required", id = "IDKluba", })
+                                    @Html.ValidationMessageFor(m => m.IDSportskoBorilačkogKluba, "", new { @class = "error" })
+                                </div>
+
+                                <button type="submit" class=" btn btn-danger  btn-block " name="upari" onkeypress="potvrdaUparivanja()">Upari<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" /></button>
+
+                            </div>
+
+                            <div class="list-group col-md-5">
+
+                                @*<div class="form-group">
+                                        <label for="dropSKlub">Izaberi 1. borca</label>
+                                        @Html.DropDownListFor(m => m.IDKorisnika1, new SelectList(""), "---ID 1. korisnika ---", new { @class = "form-control", required = "required", id = "ID1", })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="dropSKlub">Izaberi 2. borca</label>
+                                        @Html.DropDownListFor(m => m.IDKorisnika2, new SelectList(""), "---ID 2. korisnika---", new { @class = "form-control", required = "required", id = "ID2", })
+                                    </div>*@
+
+                                <p>Borci: </p>
+                                <div class="form-group">
+                                    @if (Session["listaBoraca"] != null)
+                                    {
+                                        if ((int)Session["countBorce"] > 1)
+                                        {
+                                            <label for="inputBorac">Borac 1</label>
+
+                                            @Html.DropDownListFor(m => m.IDKorisnika1, Session["listaBoraca"] as List<SelectListItem>, "---Izaberite 1. borca---", new { @class = "form-control", required = "required", name = "IDKorisnika1", id = "IDKorisnika1" })
+                                            @Html.ValidationMessageFor(m => m.IDKorisnika1, "", new { @class = "error" })
+                                        }
+                                        else
+                                        {
+                                            <p style="background-color:red; color:white; font-size:16px;"><b><i>Nema boraca koji ispunjavaju izabrane kriterijume!</i></b></p>
+                                        }
+                                    }
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        @if (Session["listaBoraca"] != null)
+                                        {
+                                            if ((int)Session["countBorce"] > 1)
+                                            {
+                                                <label for="inputBorac">Borac 2</label>
+
+                                                @Html.DropDownListFor(m => m.IDKorisnika2, Session["listaBoraca"] as List<SelectListItem>, "---Izaberite 2. borca---", new { @class = "form-control", required = "required", name = "IDKorisnika2", id = "IDKorisnika2" })
+                                                @Html.ValidationMessageFor(m => m.IDKorisnika2, "", new { @class = "error" })
+                                            }
+                                            else
+                                            {
+                                                <p style="background-color:red; color:white; font-size:16px;"><b><i>Nema boraca koji ispunjavaju izabrane kriterijume!</i></b></p>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div> <!--KRAJ UPARIVANJA-->
+        <!--SLANJE ZAHTJEVA KLUBU-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="thumbnail">
+
+                    <div class="caption">
+                        <h3>Slanje zahtjeva klubu</h3>
+                        <br />
+
+                        @using (Html.BeginForm("Mail", "ZahtevZaBorbu", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmPrijedlog" }))
+                        {
+                            <div class="row2">
+                                <div class="list-group col-md-4">
+
+                                    <div class="form-group">
+                                        <label for="dropKlub">Sportski klub</label>
+                                        @if (Session["listaKlubovaPoGradu"] != null)
+                                        {
+                                            @Html.DropDownListFor(m => m.IDSportskoBorilačkogKluba, Session["listaKlubovaPoGradu"] as List<SelectListItem>, "---Izaberi klub---", new { @class = "form-control", required = "required", id = "IDSportskoBorilačkogKluba", name = "IDSportskoBorilačkogKluba" })
+                                            @Html.ValidationMessageFor(m => m.IDSportskoBorilačkogKluba, "", new { @class = "error" })
+                                        }
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dropMail">Izaberi E-mail</label>
+                                        @Html.DropDownListFor(m => m.email, new SelectList(""), "---e-mail kluba---", new { @class = "form-control", required = "required", id = "email", })
+                                        @Html.ValidationMessageFor(m => m.email, "", new { @class = "error" })
+                                    </div>
+
+                                </div>
+
+
+                                <div class="list-group col-md-4">
+                                    <label for="dropDatum">Željeni datum</label>
+
+                                    <!--DATEPICKER-->
+                                    <div class="form-group">
+                                        <div class="input-group date" data-provide="datepicker">
+                                            @*<input type="text" class="form-control" id="datepicker">*@
+                                            @Html.TextBoxFor(model => model.datumBorbe, new { @class = "form-control", id = "datepicker", name = "datepicker" })
+                                            @Html.ValidationMessageFor(model => model.datumBorbe, "", new { @class = "error" })
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <table>
+                                        <tr>
+                                            <td>To:</td>
+                                            <td>@Html.TextBoxFor(model => model.To, new { id = "To", Text = "", @class = "form-control", required = "required" })</td>
+                                        </tr>
+                                        <tr> </tr>
+                                        <tr>
+                                            <td>Subject:</td>
+                                            <td>
+                                                @Html.TextBox("Subject", "Zahtjev za borbu", new { @class = "form-control", required = "required", @Value = "Zahtjev za borbu" })
+                                                @Html.ValidationMessageFor(model => model.Subject)
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br /><br><br /><br />
+
+                                </div>
+
+                                <div class="list-group col-md-4">
+                                    <label for="zahtjevKlubu">Tekst zahtjeva</label>
+                                    <br>
+                                    @Html.TextArea("Body", "Draga Teto,\n želim provjeriti ima li slobodnih termina za 2 borca\n1.________________  i \n2.________________\n Za datum:_________\n Tib borbe=____________\n U ___________ težinskoj kategoriji.\n Pozdrav od MZ!", new { @class = "form-control", style = "height:184px; color:red", id = "Body2", @Value = "test" })
+                                    @Html.ValidationMessageFor(model => model.Body)
+                                </div>
+                                <br />
+                                <button type="submit" class=" btn btn-danger  " name="saljiZahtjev">Šalji zahtjev<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" /></button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div> <!--KRAJ THUMBNEJLOVA 2. red-->
+        <!--KREIRANJE PRIJEDLOGA ZA BORCE-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="thumbnail">
+                    @using (Ajax.BeginForm("MailPR", "ZahtevZaBorbu", new AjaxOptions { HttpMethod = "POST" }))
+                    {
+                        <div class="caption">
+                            <h3>Kreiranje prijedloga za borce</h3>
+                            <br />
+                            <div class="row1">
+
+                                <div class="list-group col-md-4">
+                                    <label for="cij">Cijena borbe (eur.)</label>
+                                    <br>
+                                    @Html.EditorFor(model => model.Cena, new { @class = "form-control", name = "cijena", id = "cijena", onkeyUp = "Provjera()" })
+                                    <p id="TekstProvjere"></p>
+                                    @Html.ValidationMessageFor(model => model.Cena, "", new { @class = "error" })
+                                    <br />
+                                    <label for="satnica">Satnica</label>
+                                    <br>
+                                    @Html.EditorFor(model => model.vremeBorbe, new { @class = "form-control", name = "vremeBorbe", id = "vremeBorbe" })
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.vremeBorbe, "", new { @class = "error" })
+                                    <br>
+                                    <label for="datumBorbe">Datum borbe</label>
+                                    <br>
+                                    <!--DATEPICKER-->
+                                    <div class="form-group">
+                                        <div class="input-group date" data-provide="datepicker">
+                                            @*<input type="text" class="form-control" id="datumBorbe" name="datumBorbe">*@
+                                            @Html.TextBoxFor(model => model.datumBorbe, new { @class = "form-control", id = "datumBorbe", name = "datumBorbe" })
+                                            @Html.ValidationMessageFor(model => model.datumBorbe, "", new { @class = "error" })
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="list-group col-md-4">
+
+
+                                    <label for="zahtjevKlubu">Napomene za borce</label>
+                                    <br>
+                                    @Html.TextAreaFor(model => model.Napomene, new { cols = "45", rows = "7", @class = "form-control", name = "napomene", id = "napomene" })
+                                    <br><br>
+                                    @*<input class="btn btn-danger" type="submit" name="btnKreirajPrijedlog" value="Kreiraj prijedlog" onclick="PunjenjePrijedlogaZaBorbu()">*@
+
+                                    <div class="form-group">
+                                        <label for="dropMail">Izaberi E-mail 1. borca</label>
+                                        @Html.DropDownListFor(m => m.emailB1, new SelectList(""), "---e-mail 1. borca---", new { @class = "form-control", required = "required", id = "emailB1", })
+                                        @Html.ValidationMessageFor(m => m.emailB1, "", new { @class = "error" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dropMail">Izaberi E-mail 2. borca</label>
+                                        @Html.DropDownListFor(m => m.emailB2, new SelectList(""), "---e-mail 2. borca---", new { @class = "form-control", required = "required", id = "emailB2", })
+                                        @Html.ValidationMessageFor(m => m.emailB2, "", new { @class = "error" })
+                                    </div>
+                                </div>
+
+                                <div class="list-group col-md-4">
+                                    <label for="zahtjevKlubu">Prijedlog za borce</label>
+                                    <br>
+                                    @Html.TextArea("Bdy", "Dragi \n1.____________________ i \n2.____________________\n Moguće je zakazati borbu između vas dvojice u hali\n" +
+                                   "___________\n" +
+                                   "Za datum:________\n U=____________\nCijena borbe ___________ eur.\nUkoliko vam odgovara ovaj prijedlog molimo vas " +
+                                   "\n da nam pošaljete povratni mail sa potvrdom.\n\n Pozdravlja vas MZ!", new { @class = "form-control", style = "height:244px; color:red", id = "Body2", @Value = "test" })
+                                    @Html.ValidationMessageFor(model => model.Bdy)
+                                    <br />
+                                    <table>
+                                        <tr>
+                                            <td>To 1.:</td>
+                                            <td>@Html.TextBoxFor(model => model.ToA, new { id = "ToA", Text = "", @class = "form-control", required = "required" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td>To 2.:</td>
+                                            <td>@Html.TextBoxFor(model => model.ToB, new { id = "ToB", Text = "", @class = "form-control", required = "required" })</td>
+                                        </tr>
+                                        <tr> </tr>
+                                        <tr>
+                                            <td>Subject:</td>
+                                            <td>
+                                                @Html.TextBox("Subject", "", new { @class = "form-control", required = "required", @Value = "Prijedlog borbe" })
+                                                @Html.ValidationMessageFor(model => model.Subject)
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br /><br>
+
+                                </div>
+                            </div>
+
+                            <button type="submit" class=" btn btn-danger  " name="saljiPrijedlog" id="submitPrijedlog">Šalji prijedlog<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="position:center" /></button>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        <!--4.-->
+        <div class="row" id="outPut">
+            <div class="col-md-6">
+                <div class="thumbnail">
+                    @using (Html.BeginForm("PunjenjePrijedlogaZaBorbu", "ZahtevZaBorbu", FormMethod.Post, new { id = "frmSVE", name = "frmSVE" }))
+                    {
+                        <form method="post" id="frmSVE" action="PunjenjePrijedlogaZaBorbu">
+                            <div class="caption">
+                                <h3>Puni bazu sa prijedlogom</h3>
+                                <br />
+                                <div class="row4">
+
+                                    <div class="list-group col-md-12">
+                                        <div class="form-group">
+                                            <label for="dropMail">Ponovi izbor ID-a 1. borca</label>
+                                            @* @Html.TextBoxFor(m => m.IDKorisnika1, new { @class = "form-control", required = "required", id = "IDK1", name = "IDK1", value = "@Request[IDK1]" })*@
+                                            <div class="form-group">
+                                                @if (Session["listaBoraca"] != null)
+                                                {
+                                                    if ((int)Session["countBorce"] > 1)
+                                                    {
+
+
+                                                        @Html.DropDownListFor(m => m.IDKorisnika1, Session["listaBoraca"] as List<SelectListItem>, "---Izaberite 1. borca---", new { @class = "form-control", required = "required", name = "IDKorisnika1", id = "IDKorisnika1" })
+                                                        @Html.ValidationMessageFor(model => model.IDKorisnika1)
+                                                    }
+                                                    else
+                                                    {
+                                                        <p style="background-color:red; color:white; font-size:16px;"><b><i>Nema boraca koji ispunjavaju izabrane kriterijume!</i></b></p>
+                                                    }
+                                                }
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dropMail">Ponovi izbor ID-a 2. borca</label>
+                                            @* @Html.TextBoxFor(m => m.IDKorisnika2, new { @class = "form-control", required = "required", id = "IDK2", name = "IDK2" })*@
+                                            <div class="form-group">
+                                                @if (Session["listaBoraca"] != null)
+                                                {
+                                                    if ((int)Session["countBorce"] > 1)
+                                                    {
+                                                        @Html.DropDownListFor(m => m.IDKorisnika2, Session["listaBoraca"] as List<SelectListItem>, "---Izaberite 2. borca---", new { @class = "form-control", required = "required", name = "IDKorisnika2", id = "IDKorisnika2" })
+                                                        @Html.ValidationMessageFor(model => model.IDKorisnika2)
+                                                    }
+                                                    else
+                                                    {
+                                                        <p style="background-color:red; color:white; font-size:16px;"><b><i>Nema boraca koji ispunjavaju izabrane kriterijume!</i></b></p>
+                                                    }
+                                                }
+                                            </div>
+                                            @*Borci prihvatili borbu:@Html.CheckBoxFor(model => model.prihvatio, new { @class = "form-control", id = "prihvatio", name = "prihvatio" })*@
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="dropMail" class="hidden">Težinska Kategorija</label>
+                                            @Html.TextBoxFor(m => m.tezinskaKategorija, new { @class = "hidden", required = "required", id = "TKat", name = "TKat", value = "@Request[TKat]" })
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="dropMail" class="hidden">Tip Borbe</label>
+                                            @Html.TextBoxFor(m => m.tipBorbe, new { @class = "hidden", required = "required", id = "tipB", name = "tipB" })
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="dropMail" class="hidden">Napomene</label>
+                                            @Html.TextBoxFor(m => m.Napomene, new { @class = "hidden", required = "required", id = "Nap", name = "Nap" })
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="dropIDSk" class="hidden">ID Sportskog kluba</label>
+                                            @Html.TextBoxFor(m => m.IDSportskoBorilačkogKluba, new { @class = "hidden", required = "required", id = "IdSk", name = "IdSk" })
+                                        </div>
+
+                                        <label for="cij" class="hidden">Cijena borbe (eur.)</label>
+
+                                        @Html.TextBoxFor(model => model.Cena, new { @class = "hidden", id = "Ci", name = "Ci" })
+
+                                        <label for="satnica" class="hidden">Satnica</label>
+
+                                        @Html.TextBoxFor(model => model.vremeBorbe, new { @class = "hidden", id = "VriBorbe", name = "VriBorbe" })
+
+                                        <label for="datumBorbe" class="hidden">Datum borbe</label>
+
+
+                                        @Html.TextBoxFor(model => model.datumBorbe, new { @class = "hidden", id = "datum", name = "datum", })
+
+                                    </div>
+
+
+                                </div>
+
+                                <button type="submit" class=" btn btn-danger  " name="puniBazu">Puni Bazu sa Prijedlogom<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="position:center" /></button>
+                            </div>
+                        </form>
+
+
+                    }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    @*}*@
+    <footer>
+        <!--POČETAK GORNJEG DIJELA FOOTERA-->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>O nama</b></h4>
+
+                </div>
+                <p>M.A.F.A. je na prvom mestu posrednik između zainteresovanih korisnika aplikacije, oba pola,  koji žele da deo svog slobodnog vremena provedu u ringu sa drugim, uparenim korisnicima aplikacije koji su pristali na borbu i sportskih/borilačkih klubova koji trebaju da pruže uslugu prostora za borbu, sudije i medicinskog osoblja.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>Kontakt</b></h4>
+
+                </div>
+                <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>Pratite nas na:</b></h4>
+                </div>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-facebook fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-twitter fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-youtube fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-linkedin-in fa-3x"></i>
+                </a>
+
+            </div>
+        </div><!--KRAJ GORNJEG DIJELA FOOTERA-->
+        <div class="panel-footer">
+            <!--POČETAK DONJEG DIJELA FOTERA-->
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-inline">
+                        <li><a href="oNama.php">O nama</a></li>
+                        <li><a href="#">Uslovi korišćenja</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="kontakt.php">Kontakt</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-right">Copyright &copy; 2019 Mladen Zvjerac &#169;</p>
+                </div>
+
+            </div>
+        </div><!--KRAJ DONJEG DIJELA FOTERA-->
+    </footer>
+
+
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+
+<!--Pozivanje funkcije za ispis zahtjeva za sportki klub-->
+@*<script>
+
+        var kreirajZahtjev = function (ime, prezime, tezinskaKategorija, datum, Naziv, tipBorbe, grad) {
+            var ime = $("#ime").val();
+            var prezime = $("#prezime").val();
+            var tezinskaKategorija = $("#tezinskaKategorija").val();
+            var datum = $("#datum").val();
+            var Naziv = $("#Naziv").val();
+            var tipBorbe = $("#tipBorbe").val();
+            var grad = $("#grad").val();
+
+            $.ajax
+                ({
+                    type: "POST",
+                    url: "/ZahtevZaBorbu/kreirajZahtjev",
+                    data: { ime: ime, prezime: prezime, tezinskaKategorija: tezinskaKategorija, datum: datum, Naziv: Naziv, tipBorbe: tipBorbe, grad: grad },
+                    contentType: "html",
+                    success: function (response) {
+                        $("#Body").append(response);
+
+                    }
+                })
+        }
+    </script>*@
+
+<!--SKRIPTE ZA DATEPICKER-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.en-GB.min.js" charset="UTF-8"></script>
+<!--DATEPICKER-->
+<script>
+    $(document).ready(function () {
+        $('#datepicker').datepicker();
+    });
+</script>
+
+
+<!--FUNKCIJA ZA KASKADNU DROPDOWN LISTU  ID KLUBA-->
+<script>
+    $(document).ready(function () {
+        $("#grad").change(function () {
+            var gr = $(this).val();
+            debugger
+            $.ajax
+                ({
+                    type: "POST",
+                    url: "/ZahtevZaBorbu/GetKlub2?grad=" + gr,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#IDKluba").empty();
+                        $("#IDKluba").append(response);
+                    }
+                })
+        })
+
+    })
+</script>
+
+<!--FUNKCIJA ZA KASKADNU DROPDOWN LISTU  KORISNIKA 1-->
+@*<script>
+        $(document).ready(function () {
+            $("#grad", "#tezinskaKategorija", "#tipBorbe").change(function () {
+                var gr = $(this).val();
+                var tKat = $(this).val();
+                var tipB = $(this).val();
+                debugger
+                $.ajax
+                    ({
+                        type: "POST",
+                        url: "/ZahtevZaBorbu/GetK1?grad=" + gr + "&tezinskaKategorija=" + tKat + "&tipBorbe=" + tipB,
+                        contentType: "html",
+                        success: function (response) {
+                            debugger
+                            $("#ID1").empty();
+                            $("#ID1").append(response);
+                        }
+                    })
+            })
+
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#grad", "#tezinskaKategorija", "#tipBorbe").change(function () {
+                var gr = $(this).val();
+                var tKat = $(this).val();
+                var tipB = $(this).val();
+                debugger
+                $.ajax
+                    ({
+                        type: "POST",
+                        url: "/ZahtevZaBorbu/GetK2?grad=" + gr + "&tezinskaKategorija=" + tKat + "&tipBorbe=" + tipB,
+                        contentType: "html",
+                        success: function (response) {
+                            debugger
+                            $("#ID2").empty();
+                            $("#ID2").append(response);
+                        }
+                    })
+            })
+
+        })
+    </script>*@
+
+<!--FUNKCIJA ZA KASKADNU DROPDOWN LISTU  e-mail KLUBA-->
+<script>
+    $(document).ready(function () {
+        $("#IDSportskoBorilačkogKluba").change(function () {
+            var naziv = $(this).val();
+            debugger
+            $.ajax
+                ({
+                    type: "POST",
+                    url: "/ZahtevZaBorbu/GetMail?IDSportskoBorilačkogKluba=" + naziv,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#email").empty();
+                        $("#email").append(response);
+                    }
+                })
+        })
+
+    })
+</script>
+
+<!--FUNKCIJA ZA KASKADNU DROPDOWN LISTU  e-mail BORCA 1-->
+<script>
+    $(document).ready(function () {
+        $("#IDKorisnika1").change(function () {
+            var emB1 = $(this).val();
+            debugger
+            $.ajax
+                ({
+                    type: "POST",
+                    url: "/ZahtevZaBorbu/EmailB1?IDKorisnika1=" + emB1,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#emailB1").empty();
+                        $("#emailB1").append(response);
+                    }
+                })
+        })
+    })
+</script>
+
+
+<!--FUNKCIJA ZA KASKADNU DROPDOWN LISTU  e-mail BORCA 2-->
+<script>
+    $(document).ready(function () {
+        $("#IDKorisnika2").change(function () {
+            var emB2 = $(this).val();
+            debugger
+            $.ajax
+                ({
+                    type: "POST",
+                    url: "/ZahtevZaBorbu/EmailB2?IDKorisnika2=" + emB2,
+                    contentType: "html",
+                    success: function (response) {
+                        debugger
+                        $("#emailB2").empty();
+                        $("#emailB2").append(response);
+                    }
+                })
+        })
+    })
+</script>
+
+
+<!--DropDown u TB/ email Kluba-->
+<script>
+    $(function () {
+        $("[name='email']").change(function () {
+            $("#To").val($(this).val());
+        });
+    });
+</script>
+
+<!--DropDown u TB/ email 1. borca-->
+<script>
+    $(function () {
+        $("[name='emailB1']").change(function () {
+            $("#ToA").val($(this).val());
+        });
+    });
+</script>
+
+<!--DropDown u TB/ email 2. borca-->
+<script>
+    $(function () {
+        $("[name='emailB2']").change(function () {
+            $("#ToB").val($(this).val());
+        });
+    });
+</script>
+
+<!--DropDown u TB/ Težinska kategorija-->
+<script>
+    $(function () {
+        $("[name='tezinskaKategorija']").change(function () {
+            var cap = $("#TKat").val($(this).val());
+            document.getElementById("TKat").innerHTML = cap;
+        });
+    });
+</script>
+
+<!--DropDown u TB/ Tip borbe-->
+<script>
+    $(function () {
+        $("[name='tipBorbe']").change(function () {
+            $("#tipB").val($(this).val());
+        });
+    });
+</script>
+
+<!--DropDown u TB/ ID 1. borca-->
+<script>
+    $(function () {
+        $("[name='IDKorisnika1']").change(function () {
+            var capture = $("#IDK1").val($(this).val());
+            document.getElementById("IDK1").innerHTML = capture;
+
+        });
+    });
+</script>
+
+
+
+
+@*<script>
+
+        $(document).ready(function () {
+            $("[name='IDKorisnika1']").change(function () {
+                var ID1 = $(this).val();
+                debugger
+                $.ajax
+                    ({
+                        type: "POST",
+                        url: "/ZahtevZaBorbu/MailPR",
+                        contentType: "html",
+                        success: function (response)
+                        {
+                            $("@Session["IDB1"]").append(response);
+                        }
+                    })
+            })
+        })
+    </script>*@
+
+
+
+<!--DropDown u TB/ ID 2. borca-->
+<script>
+    $(function () {
+        $("[name='IDKorisnika2']").change(function () {
+            var capture = $("#IDK2").val($(this).val());
+            document.getElementById("IDK2").innerHTML = capture;
+        });
+    });
+</script>
+
+<!--DropDown u TB/ ID kluba-->
+<script>
+    $(function () {
+        $("[name='IDSportskoBorilačkogKluba']").change(function () {
+            $("#IdSk").val($(this).val());
+        });
+    });
+</script>
+
+<!--DropDown u TB/ cijena borbe-->
+<script>
+    $(function () {
+        $("[name='cijena']").blur(function () {
+            $("#Ci").val($(this).val());
+        });
+    });
+</script>
+
+<!--DropDown u TB/ satnica -->
+<script>
+    $(function () {
+        $("[name='vremeBorbe']").blur(function () {
+            $("#VriBorbe").val($(this).val());
+        });
+    });
+</script>
+
+<!--DropDown u TB/ datum -->
+<script>
+    $(function () {
+        $("[name='datumBorbe']").blur(function () {
+            $("#datum").val($(this).val());
+        });
+    });
+</script>
+
+<!--DropDown u TB/ Napomene -->
+<script>
+    $(function () {
+        $("[name='napomene']").blur(function () {
+            $("#Nap").val($(this).val());
+        });
+    });
+</script>
+
+
+@*<script>
+        var PunjenjePrijedlogaZaBorbu = function () {
+            debugger
+            var data = $("#frmSVE").serialize();
+
+            //Ajax poziv
+            $.ajax
+                ({
+                    type: "Post",
+                    url: "/ZahtevZaBorbu/PunjenjePrijedlogaZaBorbu",
+                    data: data,
+                    success: function (response) {
+                        alert("Uspješna registracija!");
+                    }
+                })
+        }
+
+    </script>*@
+
+
+<!--Ankerisanje vrijednosti u tB nakon submita-->
+@section scripts{
+    <script type="text/javascript">
+        $(function ()
+        {
+            var tkVraceno = '@Session["tezinskaKategorija"]';
+            $("#TKat").val(tkVraceno);
+        });
+
+        $(function ()
+        {
+            var tipBVraceno = '@Session["tipBorbe"]';
+            $("#tipB").val(tipBVraceno);
+        });
+
+        $(function ()
+        {
+            var idSkVraceno = '@Session["IDSportskoBorilačkogKluba"]';
+            $("#IdSk").val(idSkVraceno);
+        });
+
+        $(function ()
+        {
+            var cijenaVraceno = '@Session["Cena"]';
+            $("#Ci").val(cijenaVraceno);
+        });
+
+        $(function ()
+        {
+            var satnicaVraceno = '@Session["Satnica"]';
+            $("#VriBorbe").val(satnicaVraceno);
+        });
+
+         $(function ()
+        {
+            var datumVraceno = '@Session["Datum"]';
+             $("#datum").val(datumVraceno);
+         });
+
+         $(function ()
+        {
+            var napomenaVraceno = '@Session["Napomena"]';
+             $("#Nap").val(napomenaVraceno);
+         });
+
+         $(function ()
+        {
+            var ID1Vraceno = '@Session["IDB1"]';
+             $("#IDK1").val(ID1Vraceno);
+         });
+
+         $(function ()
+        {
+            var ID2Vraceno = '@Session["IDB2"]';
+             $("#IDK2").val(ID2Vraceno);
+        });
+
+    </script>
+}
+
+<!--Alert za potvrdu UPARIVANJA-->
+<script>
+    function potvrdaUparivanja() {
+        debugger
+        var data = $("#frmBorci").serialize();
+
+        //Ajax poziv
+        $.ajax
+            ({
+                type: "Post",
+                url: "/ZahtevZaBorbu/popuniBorce", //1. Ime kontrolera, 2. Ime funkcije u njemu
+                data: data,
+                success: function (response) {
+                    debugger
+                    if (response == "fail") {
+                        window.location.href = "/ZahtevZaBorbu/Prijedlog";
+                        alert("Neuspješno uparivanje!");
+                    }
+                    else {
+
+                        alert("Uspješno uparivanje!");
+                    }
+
+                }
+            })
+    }
+
+</script>
+
+<script>
+    function Provjera()
+    {
+        $("#TekstProvjere").html("Moguć je unos samo brojeva!");
+        $.post("@Url.Action("DaLiJeDobraCijena","ZahtevZaBorbu")",
+            {
+                sp: $("#cijena").val()
+            },
+            function (data)
+            {
+                if ($("#cijena").val == 0) {
+                    $("#TekstProvjere").html('<font color="red">A</font>')
+                    $("#cijena").css("border-color", "red");
+                    document.getElementById('submitPrijedlog').disabled = true;
+                }
+                else if (data == 0) {
+                    $("#TekstProvjere").html('<font color="green">B</font>')
+                    $("#cijena").css("border-color", "green");
+                    document.getElementById('submitPrijedlog').disabled = false;
+                }
+                else
+                {
+                    $("#TekstProvjere").html('<font color="red">C</font>')
+                    $("#cijena").css("border-color", "red");
+                    document.getElementById('submitPrijedlog').disabled = true;
+                }
+            })
+    }
+</script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script> 

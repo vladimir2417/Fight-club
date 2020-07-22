@@ -1,0 +1,36 @@
+﻿@model Mafa2.Web.Models.CheckoutViewModel
+
+@using (Html.BeginForm("CheckOut", "Narudzbenica", FormMethod.Post, new { onsubmit = "validateCheckOutForm();" }))
+{
+    <div style="position: relative;">
+        @Html.ActionLink("Nastavite kupovinu?", "Index", "Katalog", null, new { style = "position: absolute; top: 6px;" })
+        <div style="position: absolute; right:140px; top: 6px;">
+
+            Adresa za isporuku: @Html.TextBoxFor(m => m.AdresaZaIsporuku, new { size = 30, maxLength = 50, style = "margin-right: 5px;", @placeholder = "Adresa", @class = "checkInput" })
+            <p style="position: absolute; top: 25px; left: 35px; width: 270px;" class="tipValidacije">Adresa mora biti validna kućna adresa, npr. Kneza Miloša 15</p>
+            @Html.ValidationMessageFor(m => m.AdresaZaIsporuku, null, new { @class = "text-danger", @style = "position: absolute; top: 55px; left: 35px; width: 270px;" })
+
+            Grad: @Html.TextBoxFor(m => m.Grad, new { size = 8, maxLength = 30, style = "margin-right: 5px;", @placeholder = "Grad", @class = "checkInput" })
+            <p style="position: absolute; top: 25px; left:345px;" class="tipValidacije">Grad se mora sastojati samo od slova</p>
+            @Html.ValidationMessageFor(m => m.Grad, null, new { @class = "text-danger", @style = "position: absolute; top: 45px; left:345px;" })
+
+            Zip code: @Html.TextBoxFor(m => m.ZipCode, new { type = "number", style = "width: 65px;", min = "1", @placeholder = "Zip", @class = "checkInput" })
+            <p style="position: absolute; top: 25px; right:-160px;" class="tipValidacije">Poštanski broj mora sadržati 5 cifara</p>
+            @Html.ValidationMessageFor(m => m.ZipCode, null, new { @class = "text-danger", @style = "position: absolute; top: 45px; right:-160px;" })
+
+        </div>
+        @Html.HiddenFor(m => m.DatumVreme)
+        <button type="submit" name="checkoutBtn" id="checkoutBtn" class="btn btn-danger" onclick="DatumVremeIsporuke()">Check out</button>
+    </div>
+
+
+}
+
+@Scripts.Render("~/Scripts/datumVremeIsporuke.js")
+<script src="~/Scripts/validacija.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!--Sledece dve scripte MORAJU da se ubace, zbog serverske validacije!!!-->
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>

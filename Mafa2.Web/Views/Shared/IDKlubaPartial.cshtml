@@ -1,0 +1,9 @@
+﻿<option value="">---Izaberi klub---</option>
+@if (ViewBag.NazivKluba != null)
+{
+    foreach (var stavka in ViewBag.NazivKluba)
+    {
+        <option value="@stavka.Value">@stavka.Text</option>
+    }
+}
+

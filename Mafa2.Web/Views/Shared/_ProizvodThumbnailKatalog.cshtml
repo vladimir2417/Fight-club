@@ -1,0 +1,67 @@
+﻿@model Mafa2.Web.Models.LinqSql.Proizvod
+
+
+<!--  FORMA ZA UBACIVANJE U KORISNICKU KORPU!!!-->
+@using (Html.BeginForm("dodajUKorpu", "Katalog", FormMethod.Post))
+{
+    <div class="col-sm-6 col-md-4">
+        <!-- pocetak proizvoda -->
+        <div class="thumbnail">
+
+            @if (Model.Kolicina <= 0) //ukoliko proizvoda nema na stanju!
+            {
+            <div class="nemaNaStanju">
+                <span class="label label-danger labelaStanje" style="font-size: 13px;">Nema na stanju!</span>
+                <img src="@Url.Content(Model.Slika)" alt="@Model.AltSlika" width="210" height="210">
+            </div>
+            }
+            else
+            {
+            <img src="@Url.Content(Model.Slika)" alt="@Model.AltSlika" width="210" height="210">
+            }
+
+            <div class="caption">
+                <h3 class="katalogNazivProizvoda">@Model.Naziv</h3>
+                <br />
+                <p>Količina: @Html.TextBoxFor(m => m.Kolicina, new { type = "number", @class = "kolInput", min = "1", max = Model.Kolicina, required = "required", @Value = "" })</p>
+                <p>Jedinična cena: <strong><span class="jedinicnaCena">@Model.Cena</span></strong> din.</p>
+                <p>Proizvođač: <strong><span class="proizvodjac">@Model.Proizvodjac</span></strong></p>
+
+                <p class="Opis"><span>Opis: </span> <textarea class="taOpis" rows="6" cols="41" disabled>@Model.Opis</textarea></p> <!-- textArea se popunjava iz kolone Opis iz tabele Proizvod -->
+
+                @if (Model.Popust > 0)
+                {
+                <p>Popust:<strong><span> @Model.Popust%</span></strong></p>
+                }
+                else
+                {
+                    <p>Popust:<strong><span> NEMA</span></strong></p>
+                }
+
+                @Html.HiddenFor(m => m.UkupnaCena) @*u pozadini mu dodeli value Model.UkupnaCena*@
+                @Html.HiddenFor(m => m.Naziv)
+                @Html.HiddenFor(m => m.SifraProizvoda)
+                <p>Ukupna cena: <strong><span class="ukupnaCena">@Model.UkupnaCena</span></strong> din.</p>
+
+                <!--Dakle, dugme dodaj u korpu bi trebalo da bude disable kada korisnik nije ulogovan,
+    ili kada je korisnik ulogovan ali proizvod nije na stanju (kolicina <=0)-->
+                @if (Session["loggedIn"] != null && (bool)Session["loggedIn"] == true)
+                {
+
+                    if (Model.Kolicina <= 0)
+                    {
+                <button type="submit" name="btnDodajUKorpu" class="btn btn-danger" data-toggle="tooltip" title="Proizvoda nema na stanju!"  disabled>Stavi u korpu <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
+                    }
+                    else
+                    {
+                <button type="submit" name="btnDodajUKorpu" class="btn btn-danger">Stavi u korpu <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
+                    }
+                }
+                else
+                {
+                    <button type="submit" name="btnDodajUKorpu" class="btn btn-danger" data-toggle="tooltip" title="Morate da se prijavite da biste ubacili proizvod u korpu!" disabled>Stavi u korpu <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
+                }
+            </div>
+        </div>
+    </div> <!-- kraj proizvoda -->
+}

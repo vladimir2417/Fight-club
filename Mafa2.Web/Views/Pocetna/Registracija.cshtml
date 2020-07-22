@@ -1,0 +1,229 @@
+﻿@model Mafa2.Web.Models.RegistracijaViewModel
+
+@{
+    ViewBag.Title = "Registracija";
+}
+
+
+<div class="container-fluid">
+    <div class="background">
+        <div class="page-header">
+            <h1><a href="/Pocetna/Index"><img src="~/Content/img/borac2.jpg" width="1110" alt="log firme |Martial Arts Fighting Area"></a></h1>
+        </div>
+    </div>
+
+    @Html.Partial("navBarKorisnik") @*navigacioni bar za korisnika*@
+
+    <div class="row">
+        <div class="page-header">
+            <h2>Registruj se</h2>
+        </div>
+
+        @if (ViewBag.Poruka != null)
+        {
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Greška!</strong> @ViewBag.Poruka
+            </div>
+        }
+        @if (ViewBag.uspehRegistracija != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Čestitamo, @ViewBag.usernameKor!</strong> @ViewBag.uspehRegistracija
+            </div>
+        }
+
+        <!--FORMA ZA UNOS PODATAKA-->
+        @using (Html.BeginForm("RegistracijaKorisnika", "Pocetna", FormMethod.Post, new { Name = "formaReg", onsubmit = "validateRegForm();" }))
+        {
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputName">Vaše ime</label>
+                    @Html.TextBoxFor(m => m.ImeKorisnika, new { @class = "form-control regInput", @placeholder = "Ime" })
+                    <p class="tipValidacije">Ime se mora sastojati samo od slova i počinjati velikim slovom</p>
+                    @Html.ValidationMessageFor(m => m.ImeKorisnika, null, new { @class = "text-danger", @style = "text-align: center;" })
+
+
+                </div>
+                <div class="form-group">
+                    <label for="inputSurname">Vaše prezime</label>
+                    @Html.TextBoxFor(m => m.PrezimeKorisnika, new { @class = "form-control regInput", @placeholder = "Prezime" })
+                    <p class="tipValidacije">Prezime se mora sastojati samo od slova, dužine minimum 2 slova i mora početi velikim slovom</p>
+                    @Html.ValidationMessageFor(m => m.PrezimeKorisnika, null, new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    <label for="inputDate">Godine</label>
+                    @*@Html.TextBoxFor(m => m.DatumRodjenja, new
+               {
+                   type = "date",
+                   @class = "form-control regInput",
+                   @placeholder = "yyyy-mm-dd"})*@
+                    @Html.TextBoxFor(m => m.Godine, new { @class = "form-control regInput"})
+                    @Html.ValidationMessageFor(m=>m.Godine, null, new { @class = "text-danger"})
+                </div>
+                <div class="form-group">
+                    <label for="inputWeigth">Težina</label>
+                    @Html.TextBoxFor(m => m.Tezina, new { @class = "form-control regInput", @placeholder = "Masa(kg)" })
+                    <p class="tipValidacije">Molimo Vas unesite validnu težinu u kg. (dvocifren ili trocifren broj)</p>
+                    @Html.ValidationMessageFor(m => m.Tezina, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputHeight">Visina</label>
+                    @Html.TextBoxFor(m => m.Visina, new { @class = "form-control regInput", @placeholder = "Visina(cm)" })
+                    <p class="tipValidacije">Molimo Vas unesite validnu visinu u centimetrima (trocifren broj)</p>
+                    @Html.ValidationMessageFor(m => m.Visina, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputAdress">Grad stanovanja</label>
+                    @Html.TextBoxFor(m => m.MestoStanovanja, new { @class = "form-control regInput", @placeholder = "Grad" })
+                    <p class="tipValidacije">Grad se mora sastojati samo od slova i početi velikim slovom</p>
+                    @Html.ValidationMessageFor(m => m.MestoStanovanja, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputAdress">Adresa</label>
+                    @Html.TextBoxFor(m => m.Adresa, new { @class = "form-control regInput", @placeholder = "Ulica i broj" })
+                    <p class="tipValidacije">Adresa mora biti validna kućna adresa, npr. Kneza Miloša 15</p>
+                    @Html.ValidationMessageFor(m => m.Adresa, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputAdress">Borilačka veština</label>
+                    @Html.DropDownListFor(m => m.BorilackaVestina, new List<SelectListItem>{
+                            new SelectListItem {Text = "Boks", Value = "Boks"},
+                            new SelectListItem {Text = "Karate", Value = "Karate"},
+                            new SelectListItem {Text = "Džudo", Value = "Džudo"},
+                            new SelectListItem {Text = "Brazilski jiu jitsu", Value = "Brazilski jiu jitsu"},
+                            new SelectListItem {Text = "Rvanje", Value = "Rvanje"},
+                            new SelectListItem {Text = "MMA", Value = "MMA"},
+                            new SelectListItem {Text = "Tekvondo", Value = "Tekvondo"},
+                            new SelectListItem {Text = "Tajlandski Boks", Value = "Tajlandski Boks"},
+                            new SelectListItem {Text = "Kik Boks", Value = "Kik Boks"},
+                            new SelectListItem {Text = "Krav Maga", Value = "Krav Maga"}
+                        }, "---Koja bi bila vaša primarna borilačka veština---", new { @class = "form-control regInput" })
+                    @Html.ValidationMessageFor(m => m.BorilackaVestina, null, new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputWinn">Broj dobijenih borbi <span style="font-size: 12px;">(*Unesite 0 ukoliko se niste takmičili do sada)</span></label>
+                    @Html.TextBoxFor(m => m.BrDobijenihBorbi, new { @class = "form-control regInput", @placeholder = "br. dobijenih" })
+                    <p class="tipValidacije">Morate uneti broj (jednocifren ili dvocifren)</p>
+                    @Html.ValidationMessageFor(m => m.BrDobijenihBorbi, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputLose">Broj izgubljenih borbi <span style="font-size: 12px;">(*Unesite 0 ukoliko se niste takmičili do sada)</span></label>
+                    @Html.TextBoxFor(m => m.BrIzgubljenihBorbi, new { @class = "form-control regInput", @placeholder = "br. izgubljenih" })
+                    <p class="tipValidacije">Morate uneti broj (jednocifren ili dvocifren)</p>
+                    @Html.ValidationMessageFor(m => m.BrIzgubljenihBorbi, null, new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail">Vaš e-mail</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control regInput", @placeholder = "e-mail" })
+                    <p class="tipValidacije">Email mora biti validna adresa, npr. ja@mojdomen.com</p>
+                    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone">Vaš telefonski broj</label>
+                    @Html.TextBoxFor(m => m.BrTelefona, new { @class = "form-control regInput", @placeholder = "Kontakt telefon" })
+                    <p class="tipValidacije">Telefon mora biti validan srpski broj telefona</p>
+                    @Html.ValidationMessageFor(m => m.BrTelefona, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputUsername">Username</label>
+                    @Html.TextBoxFor(m => m.UsernameKorisnik, new { @class = "form-control regInput", @placeholder = "Unesite željeno korisničko ime" })
+                    <p class="tipValidacije">Username mora biti alfanumericki, dužine 5-15 karaktera i ne može početi brojem</p>
+                    @Html.ValidationMessageFor(m => m.UsernameKorisnik, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputPass">Password</label>
+                    @Html.PasswordFor(m => m.PasswordKorisnika1, new { @class = "form-control regInput", @placeholder = "Unesite željenu lozinku" })
+                    <p class="tipValidacije">Password mora biti alfanumerički (@@, _ i - takođe su dozvoljeni) i dužine između 5 i 20 karaktera</p>
+                    @Html.ValidationMessageFor(m => m.PasswordKorisnika1, null, new { @class = "text-danger" })
+                </div>
+                <div>
+                    <label for="inputPass">Ponovite unos Password-a</label>
+                    @Html.PasswordFor(m => m.PasswordKorisnika2, new { @class = "form-control regInput", @placeholder = "Ponovite unos lozinke" })
+                    @Html.ValidationMessageFor(m => m.PasswordKorisnika2, null, new { @class = "text-danger" })
+                </div>
+                <br />
+                <button type="submit" class="btn btn-danger form-control" name="btnRegistracija">Registruj se</button>
+            </div>
+            <div id="msg"></div>
+        }
+
+
+    </div>
+
+
+    <footer>
+        <div class="row">
+            <!--POČETAK GORNJEG DIJELA FOOTERA-->
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>O nama</b></h4>
+
+                </div>
+                <p>M.A.F.A. je na prvom mestu posrednik između zainteresovanih korisnika aplikacije, oba pola,  koji žele da deo svog slobodnog vremena provedu u ringu sa drugim, uparenim korisnicima aplikacije koji su pristali na borbu i sportskih/borilačkih klubova koji trebaju da pruže uslugu prostora za borbu, sudije i medicinskog osoblja.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>Kontakt</b></h4>
+
+                </div>
+                <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>Pratite nas na:</b></h4>
+                </div>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-facebook fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-twitter fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-youtube fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-linkedin-in fa-3x"></i>
+                </a>
+
+            </div>
+        </div><!--KRAJ GORNJEG DIJELA FOOTERA-->
+        <div class="panel-footer">
+            <!--POČETAK DONJEG DIJELA FOTERA-->
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-inline">
+                        <li><a href="oNama.php">O nama</a></li>
+                        <li><a href="#">Uslovi korišćenja</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="kontakt.php">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-right">Copyright &copy; 2019 Mladen Zvjerac &#169;</p>
+                </div>
+
+            </div>
+        </div><!--POČETAK DONJEG DIJELA FOTERA-->
+    </footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+
+<script src="~/Scripts/validacija.js"></script>
+
+
+<!--Sledece dve scripte MORAJU da se ubace, zbog serverske validacije!!!-->
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>

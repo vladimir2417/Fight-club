@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Mafa2.Web.Models.StavkeNarudzbeniceBO>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Sifra proizvoda")
+        </th>
+        <th>
+            @Html.DisplayName("Redni broj")
+        </th>
+        <th>
+            @Html.DisplayName("Izabrana kolicina")
+        </th>
+        <th>
+            @Html.DisplayName("Ukupna cena stavke")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraProizvoda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RedniBr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IzabranaKolicina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UkupnaCenaStavke)
+            </td>
+        </tr>
+    }
+
+</table>
+

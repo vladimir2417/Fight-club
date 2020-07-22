@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Mafa2.Web.Models.ProizvodBO>
+
+@{
+    ViewBag.Title = "PrikazProizvoda";
+}
+<div class="container-fluid">
+    <div class="background">
+        <div class="page-header">
+            <h1><a href="/PocetnaPRODAVAC/index"><img src="~/Content/img/borac2.jpg" style="max-height: 100%; max-width:100%"></a> </h1>
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/PocetnaPRODAVAC/index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Početna strana PRODAVCA</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/Proizvod/PrikazProizvoda">Prikaz proizvoda</a></li>
+                        <li><a href="/Proizvod/UnosProizvoda">Unos novih proizvoda</a></li>
+                        <li><a href="/NarudzbenicaProd/PrikazNarudzbenice">Prikaz narudzbenica</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("LogOut", "Pocetna")" onclick="return confirm('Da li ste sigurni da želite da se odjavite?');">Odjavite se</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+@if (Session["idjeviNar"] != null)
+{
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Upozorenje! Morate prvo obrisati narudžbenice vezane za ovaj proizvod: </strong> @Session["idjeviNar"]
+    </div>
+
+    Session["idjeviNar"] = null;
+}
+
+<h2>Prikaz proizvoda</h2>
+
+<p>
+    @Html.ActionLink("Unesi nov", "UnosProizvoda")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Sifra proizvoda")
+        </th>
+        <th>
+            @Html.DisplayName("Naziv")
+        </th>
+        <th>
+            @Html.DisplayName("Kolicina")
+        </th>
+        <th>
+            @Html.DisplayName("Opis")
+        </th>
+        <th>
+            @Html.DisplayName("Cena")
+        </th>
+        <th>
+            @Html.DisplayName("Proizvodjac")
+        </th>
+        <th>
+            @Html.DisplayName("Popust")
+        </th>
+        <th>
+            @Html.DisplayName("ID kataloga")
+        </th>
+        <th>
+            @Html.DisplayName("Slika")
+        </th>
+        <th>
+            @Html.DisplayName("Ukupna cena")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SifraProizvoda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kolicina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvodjac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Popust)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Katalog.IDKatalog)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Slika)" width="100" height="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UkupnaCena)
+            </td>
+            <td>
+                @Html.ActionLink("Azuriraj", "AzuriranjeProizvoda", new { SifraProizvoda = item.SifraProizvoda }) |
+                @Html.ActionLink("Obrisi", "BrisanjeProizvoda", new { SifraProizvoda = item.SifraProizvoda })
+            </td>
+        </tr>
+    }
+
+</table>

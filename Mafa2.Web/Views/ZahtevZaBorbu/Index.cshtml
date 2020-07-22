@@ -1,0 +1,203 @@
+﻿@model IEnumerable<Mafa2.Web.Models.LinqSql.ZahtevZaBorbu>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container-fluid">
+    <div class="background">
+        <div class="page-header">
+            <h1><a><img src="~/Content/img/borac2.jpg" width="1110" alt="log firme |Martial Arts Fighting Area"></a></h1>
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/ZahtevZaBorbu/Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Početna strana</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/ZahtevZaBorbu/Index">Aktivni zahtjevi</a></li>
+                        <li><a href="/ZahtevZaBorbu/Prijedlog">Kreiranje prijedloga</a></li>
+                        <li><a href="/Rezervacija/Rezervacija">Rezervacija kluba</a></li>
+                        <li><a href="#">Slanje potvrda</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("LogOut", "Pocetna")" onclick="return confirm('Da li ste sigurni da želite da se odjavite?');">Odjavite se</a></li>
+                    </ul>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav><!--KRAJ NAVIGACIJE-->
+
+        <div class="row">
+            <div class="page-header">
+                <h2>Aktivni zahtevi za borbu</h2>
+            </div>
+
+
+            <form id="myForm" method="post">
+
+                <div class="col-md-8 container" id="detaljiZahteva">
+                    <table class="table table-responsive" border="1">
+
+                        <tr>
+                            <th>IDZahteva</th>
+                            <th>Zahtevani datum</th>
+                            <th>Zahtevano Mesto</th>
+                            <th>Tip borbe</th>
+                            <th>Korisničke napomene</th>
+                            <th>BRIŠI</th>
+                        </tr>
+
+                        @if (ViewBag.ListaZahtjeva != null)
+                        {
+                            foreach (var zahtevZaBorbu in ViewBag.ListaZahtjeva)
+                            {
+
+                                <tr id="row_@zahtevZaBorbu.IDZahtevaKorisnika">
+                                    <td><h5>@zahtevZaBorbu.IDZahtevaKorisnika</h5></td>
+                                    <td><h5>@zahtevZaBorbu.ZahtevaniDatum</h5></td>
+                                    <td><h5>@zahtevZaBorbu.ZahtevanoMesto</h5></td>
+                                    <td><h5>@zahtevZaBorbu.tipBorbe </h5></td>
+                                    <td><h5>@zahtevZaBorbu.korisničkeNapomene</h5></td>
+                                    <td><a href="#" class="btn btn-danger" onclick="PotvrdiBrisanje(@zahtevZaBorbu.IDZahtevaKorisnika)"><i class="glyphicon glyphicon-trash"></i></a></td>
+                                    @*<td>
+                                            <a href="@Url.Action("BrisiZahtjev", "ZahtevZaBorbu", new { IDZahtevaKorisnika = zahtevZaBorbu.IDZahtevaKorisnika })" onclick="return confirm('Da li ste sigurni da zelite da obrisete zahtev: @zahtevZaBorbu.IDZahtevaKorisnika ?')">
+                                                <button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                                            </a>
+                                        </td>*@
+
+                                </tr>
+                            }
+                        }
+
+                    </table>
+
+                    <a href="/ZahtevZaBorbu/Prijedlog" class="btn btn-danger btn-primary">PROCESUIRAJ</a>
+                </div>
+            </form>
+        </div>
+        <input type="hidden" id="sakrivenIDZahtjeva" />
+        <!--DA LI STVARNO ŽELIŠ BRISATI?-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class=" modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3 class="modal-title">BRIŠI ZAHTJEV</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Jesi li siguran da želiš obrisati zahtjev?</h4>
+                        <div style="text-align:center; display:none" id="loaderDiv">
+                            <img src="~/Content/img/br.gif" width="150" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">Otkaži</a>
+                        <a href="#" class="btn btn-success" onclick="BrisiZahtjev()">Potvrdi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer>
+            <div class="row">
+                <!--POČETAK GORNJEG DIJELA FOOTERA-->
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>O nama</b></h4>
+
+                    </div>
+                    <p>M.A.F.A. je na prvom mestu posrednik između zainteresovanih korisnika aplikacije, oba pola,  koji žele da deo svog slobodnog vremena provedu u ringu sa drugim, uparenim korisnicima aplikacije koji su pristali na borbu i sportskih/borilačkih klubova koji trebaju da pruže uslugu prostora za borbu, sudije i medicinskog osoblja.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Kontakt</b></h4>
+                    </div>
+
+                    <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                    <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Pratite nas na:</b></h4>
+                    </div>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-facebook fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-twitter fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-youtube fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-linkedin-in fa-3x"></i>
+                    </a>
+
+                </div>
+            </div><!--KRAJ GORNJEG DIJELA FOOTERA-->
+            <div class="panel-footer">
+                <!--POČETAK DONJEG DIJELA FOTERA-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li><a href="oNama.php">O nama</a></li>
+                            <li><a href="#">Uslovi korišćenja</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="kontakt.php">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-right">Copyright &copy; 2019 Mladen Zvjerac &#169;</p>
+                    </div>
+                </div>
+            </div><!--KRAJ DONJEG DIJELA FOTERA-->
+        </footer>
+    </div>
+</div>
+
+<script>
+
+    var PotvrdiBrisanje = function (IDZahtevaKorisnika) {
+        $("#sakrivenIDZahtjeva").val(IDZahtevaKorisnika);
+        $("#myModal").modal('show');
+    }
+
+    var BrisiZahtjev = function () {
+
+        $('#loaderDiv').show();
+
+        var zahID = $("#sakrivenIDZahtjeva").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/ZahtevZaBorbu/BrisiZahtjev", //Poveznica sa metodom iz kontrolera
+            data: { IDZahtevaKorisnika: zahID },
+            success: function (rezultat) {
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + zahID).remove();
+            }
+
+        })
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    @Styles.Render("~/Content/css/bootstrap.min.css")
+    @Styles.Render("~/Content/css/all.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" type="text/css" href="stilF.css"/>-->
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/all.min.css" rel="stylesheet">-->
+    <!--LINK KA AWESOME FONTU-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/mojStil.css" />
+
+    <style>
+        body {
+            background-image: url("~/Content/img/borac2.JPG");
+            -webkit-filter: grayscale(50%); /* ALAT ZA TRANSFORMACIJU SLIKE */
+            filter: grayscale(50%);
+            background-repeat: no-repeat;
+            background-size: 100% 21.2%
+        }
+    </style>
+</head>
+<body>
+
+    @if (Session["IDUsera"] !=null)
+    {
+        <ul class="nav navbar-nav navbar-right">            
+            <li><a href="/Pocetna/LogOut"><small>Logout</small></a></li>
+        </ul>
+    }
+
+    <!-- <div class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container">
+             <div class="navbar-header">
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
+                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+             </div>
+             <div class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                     <li>@Html.ActionLink("About", "About", "Home")</li>
+                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                 </ul>
+             </div>
+         </div>
+     </div>-->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿@model Mafa2.Web.Models.PredlogBorbeViewModelKorisnik
+@using System.Globalization;
+
+<!--FORMA ZA PRIHVATANJE ILI ODBIJANJE PREDLOGA BORBE KORISNIKA-->
+
+@using (Html.BeginForm("obradiPredlog", "PredlogBorbe", FormMethod.Post))
+{
+    <div class="col-md-6">
+
+        <fieldset class="fieldsetPredlozi">
+            <legend class="legendPredlog">Predlog borbe (ID: @Model.IDPredloga)</legend>
+            @{
+                DateTimeFormatInfo fmt = (new CultureInfo("hr-HR")).DateTimeFormat;
+            }
+            <p>Datum i vreme održavanja: <b>@Model.DatumVremeBorbe.ToString("d", fmt)</b> u <b>@Model.vremeBorbe</b></p>
+            <p>Mesto održavanja: <b>@Model.SportskoBorilackiKlub.Naziv</b> <br /> Adresa: @Model.SportskoBorilackiKlub.Adresa, @Model.SportskoBorilackiKlub.Grad</p>
+            <p>Podaci o borcima:</p>
+            <!--borac 1-->
+            <div class="borac1" style="display: inline-block; margin-right: 20px;">
+                <h3 style="margin-top: 5px;">Prvi borac</h3>
+                <h4>@Model.Korisnik1.Ime @Model.Korisnik1.Prezime (ID: @Model.Korisnik1.IDKorisnika)</h4>
+                <p>Username: @Model.Korisnik1.username</p>
+                @*Izbačeno računanje godina, zbog toga što smo izbacili datum rodjenja i samo godine ubacili*@
+                @*@{
+                    var birthdate = Model.Korisnik1.DatumRodjenja;
+                    var today = DateTime.Today;
+                    var age = today.Year - birthdate.Year;
+                    if (birthdate.Date > today.AddYears(-age))
+                    {
+                        age--;
+                    }
+
+                }*@
+                @*<p>Datum rođenja: @Model.Korisnik1.DatumRodjenja</p>*@
+                <p>Starost: @Model.Korisnik1.Godine</p>
+                <p>Email: @Model.Korisnik1.email</p>
+                <p>Visina: @Model.Korisnik1.Visina cm</p>
+                <p>Pobede: @Model.Korisnik1.BrDobijenihBorbi Porazi: @Model.Korisnik1.BrIzgubljenihBorbi</p>
+            </div>
+            <!--kraj borca 1-->
+
+            <!--borac 2-->
+            <div class="borac2" style="display: inline-block; margin-right: 5px;">
+                <h3 style="margin-top: 5px;">Drugi borac</h3>
+                <h4>@Model.Korisnik2.Ime @Model.Korisnik2.Prezime (ID: @Model.Korisnik2.IDKorisnika)</h4>
+                <p>Username: @Model.Korisnik2.username</p>
+
+                @*@{
+                    birthdate = Model.Korisnik2.DatumRodjenja;
+                    today = DateTime.Today;
+                    age = today.Year - birthdate.Year;
+                    if (birthdate.Date > today.AddYears(-age))
+                    {
+                        age--;
+                    }
+                }*@
+
+                @*<p>Datum rođenja: @Model.Korisnik2.DatumRodjenja</p>*@
+                <p>Starost: @Model.Korisnik2.Godine</p>
+                <p>Email: @Model.Korisnik2.email</p>
+                <p>Visina: @Model.Korisnik2.Visina cm</p>
+                <p>Pobede: @Model.Korisnik2.BrDobijenihBorbi Porazi: @Model.Korisnik2.BrIzgubljenihBorbi</p>
+            </div>
+            <!--Kraj borca 2-->
+            <br />
+            <br />
+            <div style="display: flex; justify-content: center;">
+                @Html.HiddenFor(m=>m.IDPredloga)
+                @Html.HiddenFor(m=>m.DatumVremeBorbe)
+                @Html.HiddenFor(m=>m.SportskoBorilackiKlub.Naziv)
+                @Html.HiddenFor(m=>m.SportskoBorilackiKlub.Adresa)
+                <button type="submit" name="btnPrihvatiPred" class="btn-success" style="margin-right: 10px;" onclick="return confirm('Da li ste sigurni da prihvatate predlog borbe (ID: @Model.IDPredloga)?')">Prihvati borbu</button>
+                <button type="submit" name="btnOdbijPred" class="btn-danger" onclick="return confirm('Da li ste sigurni da želite da odbijete predlog borbe (ID: @Model.IDPredloga)?')">Odbij</button>
+            </div>
+        </fieldset>
+
+    </div>
+}

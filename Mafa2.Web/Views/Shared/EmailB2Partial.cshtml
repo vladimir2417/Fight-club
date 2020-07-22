@@ -1,0 +1,9 @@
+﻿<option value="">---Izaberi e-mail---</option>
+@if (ViewBag.EmailB2 != null)
+{
+    foreach (var stavka in ViewBag.EmailB2)
+    {
+        <option value="@stavka.Value">@stavka.Text</option>
+    }
+}
+

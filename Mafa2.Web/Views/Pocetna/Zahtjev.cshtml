@@ -1,0 +1,188 @@
+﻿@model Mafa2.Web.Models.ZahtevBorbeViewModelKor
+@{
+    ViewBag.Title = "Zahtjev";
+}
+
+<div class="container-fluid">
+    <div class="background">
+        <div class="page-header">
+            <h1><a href="/Pocetna/Index"><img src="~/Content/img/borac2.jpg" width="1110" alt="log firme |Martial Arts Fighting Area"></a></h1>
+        </div>
+    </div>
+
+    @Html.Partial("navBarKorisnik") @*navigacioni bar za korisnika*@
+
+    <div class="page-header">
+        <h2>Zahtev za borbu</h2>
+    </div>
+
+    <div class="row">
+
+        @* poruka da je zahtev submitovan! *@
+        @if (Session["zahtevDatum"] != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Uspešno ste poslali zahtev! (Podaci: zahtevani datum <b>@String.Format("{0:d}", (DateTime)Session["zahtevDatum"])</b>, zahtevano mesto <b>@Session["zahtevMesto"]</b>,
+                kategorija <b>@Session["zahtevKategorija"]</b>, tip borbe: <b>@Session["zahtevTipBorbe"]</b>)
+            </div>
+            Session["zahtevDatum"] = null;
+            Session["zahtevMesto"] = null;
+            Session["zahtevTipBorbe"] = null;
+            Session["zahtevKategorija"] = null;
+
+        }
+
+        @* poruka da je izabran datum u pogresnom opsegu! *@
+        @if (Session["PogresanDatum"] != null)
+        {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Greška!</strong> Izabrali ste željeni datum: <b>@(String.Format("{0:dd/MM/yyyy}", (DateTime)Session["PogresanDatum"]))</b> Morate izabrati datum u dozvoljenom opsegu od <b>maksimum dva meseca od današnjeg datuma.</b>
+        </div>
+            Session["PogresanDatum"] = null;
+        }
+
+        <!--FORMA ZA UNOS PODATAKA-->
+        @using (Html.BeginForm("submitZahtev", "ZahtevZaBorbu", FormMethod.Post, new { onsubmit = "validateZahtevForm();" }))
+        {
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="ZahtevaniDatum">Željeni datum*</label>
+                    @Html.TextBoxFor(m => m.ZahtevaniDatum, new
+                    {
+                        type = "date",
+                        @class = "form-control",
+                    placeholder = "Izaberite datum"
+                })
+                    @Html.ValidationMessageFor(m => m.ZahtevaniDatum, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputMesto">Željeno mesto*</label>
+                    @Html.TextBoxFor(m => m.ZahtevanoMesto, new { @class = "form-control zahtevInput", placeholder = "Mesto" })
+                    <p class="tipValidacije">Grad se mora sastojati samo od slova i početi velikim slovom</p>
+                    @Html.ValidationMessageFor(m => m.ZahtevanoMesto, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="dropTezKategorija">Tezinska kategorija*</label>
+                    @Html.DropDownListFor(m => m.TezinskaKategorija, new List<SelectListItem> {
+                        new SelectListItem {Text = "Papir, do 48 kg", Value ="Papir, do 48 kg"},
+                        new SelectListItem {Text = "Muha, 48-51 kg", Value = "Muha, 48-51 kg"},
+                        new SelectListItem {Text = "Bantam, 51-54 kg", Value = "Bantam, 51-54 kg"},
+                        new SelectListItem {Text = "Perolaka, 54-57 kg", Value = "Perolaka, 54-57 kg"},
+                        new SelectListItem {Text = "Laka, 57-60 kg", Value = "Laka, 57-60 kg"},
+                        new SelectListItem {Text = "Poluvelter, 60-64 kg", Value = "Poluvelter, 60-64 kg"},
+                        new SelectListItem {Text = "Velter, 64-69 kg", Value = "Velter, 64-69 kg"},
+                        new SelectListItem {Text = "Srednja, 69-75 kg", Value = "Srednja, 69-75 kg"},
+                        new SelectListItem {Text = "Poluteška, 75-81 kg", Value = "Poluteška, 75-81 kg"},
+                        new SelectListItem {Text = "Teška, 81-91 kg", Value = "Teška, 81-91 kg"},
+                        new SelectListItem {Text = "Superteška, 91 kg +", Value = "Superteška, 91 kg +"}
+                    }, "---izaberi kategoriju---", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TezinskaKategorija, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputTipBorbe">Tip borbe*</label>
+                    @Html.DropDownListFor(model => model.TipBorbe, new List<SelectListItem>{
+                        new SelectListItem {Text = "Boks", Value = "Boks"},
+                        new SelectListItem {Text = "Karate", Value = "Karate"},
+                        new SelectListItem {Text = "Džudo", Value = "Džudo"},
+                        new SelectListItem {Text = "Brazilski jiu jitsu", Value = "Brazilski jiu jitsu"},
+                        new SelectListItem {Text = "Rvanje", Value = "Rvanje"},
+                        new SelectListItem {Text = "MMA", Value = "MMA"},
+                        new SelectListItem {Text = "Tekvondo", Value = "Tekvondo"},
+                        new SelectListItem {Text = "Tajlandski Boks", Value = "Tajlandski Boks"},
+                        new SelectListItem {Text = "Kik Boks", Value = "Kik Boks"}
+                    }, "---izaberi tip borbe---", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TipBorbe, null, new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="inputKorNapomene">Korisničke napomene</label>
+                    @Html.TextAreaFor(m => m.KorisnickeNapomene, new { rows = 8, @class = "form-control", placeholder = "Unesite napomene" })
+                    @Html.ValidationMessageFor(m => m.KorisnickeNapomene, null, new { @class = "text-danger" })
+                </div>
+                <br>
+                <button type="submit" class="btn btn-danger btn-lg btn-block" name="dodajZahtev">Pošalji zahtev</button>
+                <br>
+                @*<p>Ukoliko nemate otvoren nalog možete ga otvoriti ovde <a href="/Pocetna/Registracija">Registracija</a></p>*@
+                <p style="width: 450px; text-align: justify;">
+                    *Molimo Vas da popunite polje za <b>napomene</b> i tu nam dodatno navedete Vaše lične zahteve, želje i dodatne informacije o Vama, kako biste nam pomogli u što boljem uparivanja boraca i organizaciji događaja.
+                    Neke od korisnih informacija mogu biti: Da li želite da iznajmite sportsku opremu u klubu ili imate svoju; Nivo vaše sportske uvežbanosti i kondicije; Da li ste početnik u borilačkim sportovima ili imate iskustva; Koliko godina ste u borilačkim sportovima; Da li imate neki pojas/rang/čin i u čemu...
+                </p>
+
+            </div>
+
+        }
+
+    </div>
+
+
+    <footer>
+        <div class="row">
+            <!--POČETAK GORNJEG DIJELA FOOTERA-->
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>O nama</b></h4>
+
+                </div>
+                <p>M.A.F.A. je na prvom mestu posrednik između zainteresovanih korisnika aplikacije, oba pola,  koji žele da deo svog slobodnog vremena provedu u ringu sa drugim, uparenim korisnicima aplikacije koji su pristali na borbu i sportskih/borilačkih klubova koji trebaju da pruže uslugu prostora za borbu, sudije i medicinskog osoblja.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>Kontakt</b></h4>
+
+                </div>
+                <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4><b>Pratite nas na:</b></h4>
+                </div>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-facebook fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-twitter fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-youtube fa-3x"></i>
+                </a>
+                <a href="#" class="btn btn-danger" role="button">
+                    <i class="fab fa-linkedin-in fa-3x"></i>
+                </a>
+
+            </div>
+        </div><!--KRAJ GORNJEG DIJELA FOOTERA-->
+        <div class="panel-footer">
+            <!--POČETAK DONJEG DIJELA FOTERA-->
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-inline">
+                        <li><a href="oNama.php">O nama</a></li>
+                        <li><a href="#">Uslovi korišćenja</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="kontakt.php">Kontakt</a></li>
+                        <li><a href="#">Mapa sajta</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-right">Copyright &copy; 2019 Mladen Zvjerac &#169;</p>
+                </div>
+
+            </div>
+        </div><!--POČETAK DONJEG DIJELA FOTERA-->
+    </footer>
+</div>
+@*</div>*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="~/Scripts/validacija.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<!--Sledece dve scripte MORAJU da se ubace, zbog serverske validacije!!!-->
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+

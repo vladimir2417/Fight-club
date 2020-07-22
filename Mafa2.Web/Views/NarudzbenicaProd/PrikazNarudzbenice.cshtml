@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Mafa2.Web.Models.NarudzbenicaBO>
+
+@{
+    ViewBag.Title = "PrikazNarudzbenice";
+}
+
+<div class="container-fluid">
+    <div class="background">
+        <div class="page-header">
+            <h1><a href="/PocetnaPRODAVAC/index"><img src="~/Content/img/borac2.jpg" style="max-height: 100%; max-width:100%"></a> </h1>
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/PocetnaPRODAVAC/index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Početna strana PRODAVCA</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Proizvod/PrikazProizvoda">Prikaz proizvoda</a></li>
+                        <li><a href="/Proizvod/UnosProizvoda">Unos novih proizvoda</a></li>
+                        <li class="active"><a href="/NarudzbenicaProd/PrikazNarudzbenice">Prikaz narudzbenica</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("LogOut", "Pocetna")" onclick="return confirm('Da li ste sigurni da želite da se odjavite?');">Odjavite se</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+<h2>Prikaz narudzbenica</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="list-group" style="height: 600px; overflow: hidden; overflow-y: scroll">
+
+            @foreach (var narudzbenica in Model)
+            {
+
+                <a class="list-group-item" onclick='narudzbeniceClick(this, @Html.Raw(Json.Encode(narudzbenica)));'>
+                    <h6>
+                        @Html.DisplayFor(model => narudzbenica.IDNarudzbenice) @Html.DisplayFor(model => narudzbenica.Grad)
+                    </h6>
+
+                </a>
+            }
+
+        </div>
+    </div>
+    <div class="col-md-6" id="detaljiNarudzbenice" style="visibility: hidden">
+        <label class="control-label">Detalji narudzbenice:</label>
+        <p id="detaljiNarudzbeniceText"></p>
+        <input id="btnStavke" type="button" class="btn" value="Stavke" />
+        <input id="btnObrisi" type="button" class="btn" value="Obrisi" />
+
+        <div id="Stavke" style="visibility: hidden">
+            @{Html.RenderAction("PrikaziStavke", "NarudzbenicaProd", new { id = 0 });}
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function narudzbeniceClick(htmlItem, narudzbenica) {
+            document.getElementById('Stavke').style.visibility = "hidden";
+            $('a.list-group-item.active').removeClass('active');
+            $(htmlItem).addClass('active');
+            document.getElementById('detaljiNarudzbenice').style.visibility = "visible";
+            document.getElementById("detaljiNarudzbeniceText").innerHTML =
+                "Datum i vreme: " + narudzbenica.DatumVreme + "<br>Adresa za isporuku: " + narudzbenica.AdresaZaIsporuku
+            + "<br>Zip kod: " + narudzbenica.ZipCode + "<br>Ukupna cena: " + narudzbenica.TotalCena;
+
+            document.getElementById('btnObrisi').onclick = function () {
+                window.location.href = "../NarudzbenicaProd/NarudzbenicaZaBrisanje/" + narudzbenica.IDNarudzbenice;
+        }
+        document.getElementById('btnStavke').onclick = function () {
+            document.getElementById('Stavke').style.visibility = "visible";
+            var IDNarudzbenice = narudzbenica.IDNarudzbenice;
+            if (IDNarudzbenice === "")
+        {
+                IDNarudzbenice = 0;
+        }
+        $.ajax({
+            url: '@Url.Action("PrikaziStavke", "NarudzbenicaProd")',
+            data: { id: IDNarudzbenice },
+            success:   function(result) {
+                $('#Stavke').html(result);
+            }
+        });
+        }
+    }
+</script>
+
+
+
+

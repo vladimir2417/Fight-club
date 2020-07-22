@@ -1,0 +1,59 @@
+﻿@*POCETAK navigacionog bara za korisnika*@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Pocetna/Index"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Početna strana</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/Pocetna/ONama"> O nama <span class="sr-only">(current)</span></a></li>
+                <li><a href="/Pocetna/Galerija">Galerija</a></li>
+                <li><a href="/Katalog/Index">Katalog sportske opreme</a></li>
+                @if (Session["idKorisnika"] != null)
+                {
+                    <li><a href="/Pocetna/Zahtjev">Zahtev za borbu</a></li>
+                    <li><a href="@Url.Action("PredloziBorbe", "PredlogBorbe")">Predlozi borbi</a></li>
+                }
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                @if (Session["idKorisnika"] != null)
+                {
+                    <li><a href="@Url.Action("Index", "Korpa")">Korpa <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+
+                }
+                <li>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Pretraga">
+                        </div>
+                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </form>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if (Session["idKorisnika"] == null)
+                {
+                    <li class="liUlogujSe"><a href="/Pocetna/Login">Prijavite se</a></li>
+                    <li><a href="/Pocetna/Registracija">Registracija</a></li>
+                    <li class="kontaktNav"><a href="/Pocetna/Kontakt">Kontakt</a></li>
+                }
+                else
+                {
+                <li style="padding-top: 15px; color: #bf2424;">Dobrodošli, <b> @Session["ImePrezimeKor"].ToString().</b></li>
+                <li><a href="@Url.Action("LogOut", "Pocetna")" onclick="return confirm('Da li ste sigurni da želite da se odjavite?');">Odjavite se</a></li>
+                }
+
+            </ul>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+@*KRAJ navigacionog bara za korisnika*@

@@ -1,0 +1,109 @@
+
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #070707;
+    background-color: #d92828;
+}
+
+.katalogNazivProizvoda{ /*da bi h3 u thumbnail-u bio jednak (thumbnailovi da bi bili iste velicine!!!)*/
+    height: 65px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #777;
+    padding-left: 12px;/*da bi stali sve opcije u jedan red u navbar-u*/
+}
+
+.navbar-left { /*podesava deo gde je forma za pretragu!*/
+    padding-left: 0;
+}
+
+.navbar-default .navbar-form {
+    padding-right: 0;
+}
+
+#pageHeaderKorpa, #predloziBorbeHeader {
+    border-bottom: 1px solid #d15a5a;
+    padding-bottom: 0px;
+}
+#tabelaKorpa {
+    background-color: #d7c8c8;
+}
+#tabelaKorpa td,#tabelaKorpa tr { 
+border-top: 1px solid #d15a5a;
+}
+
+
+/*Za kada proizvoda nema na stanju da se prikaze labela "nema na stanju"*/
+.nemaNaStanju{
+    position: relative;
+    text-align: center;
+}
+
+.labelaStanje{
+    position: absolute;
+    top: 60px;
+    left: 5px;
+    padding: 2px;
+}
+
+#checkoutBtn {
+    position: absolute;
+    right: 0px;
+    width: 115px;
+
+}
+
+.checkInput {
+    border-radius: 5px;
+    border-color: #d6b4b4;
+}
+
+.tabelaStavke>tbody>tr> td {
+    vertical-align: middle;
+}
+
+.fieldsetPredlozi {
+    padding: 10px;
+    border: 1px solid #d15a5a;
+}
+
+.legendPredlog {
+    border: 0;
+    margin-bottom: 5px;
+}
+
+
+/*------------------------------------------------*/
+/*validation styles*/
+
+.valid:focus, .valid {
+    border: 2px solid #36cc36;
+    /*border-color: #36cc36;*/
+}
+
+.invalid:focus, .invalid {
+    border: 2px solid #db5512;
+    /*#d43131*/
+}
+
+p.tipValidacije {
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px; /*margina levo i desno!*/
+    margin-left: 12px;
+    margin-right: 12px;
+    color: #db5512;
+    opacity: 0; /*ovime kazemo da nece biti vidljiva po defaultu*/
+    height: 0;
+}
+
+.invalid + p {
+    opacity: 1; /*opacity odnosno vidljivost (prozirnost) je puna!!!*/
+    height: auto;
+    margin-bottom: 8px;
+}
+
+/*------------------------------------------------*/

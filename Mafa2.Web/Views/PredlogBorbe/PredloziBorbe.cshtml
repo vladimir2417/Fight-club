@@ -1,0 +1,155 @@
+﻿@model IEnumerable<Mafa2.Web.Models.PredlogBorbeViewModelKorisnik>
+@using Mafa2.Web.Models
+
+@{
+    ViewBag.Title = "PredloziBorbe";
+}
+
+@*<h2>PredloziBorbe</h2>*@
+
+
+<div class="container-fluid">
+    <div class="background">
+        <div class="page-header">
+            <h1><a href="/Pocetna/Index"><img src="~/Content/img/borac2.jpg" width="1110" alt="log firme |Martial Arts Fighting Area"></a></h1>
+        </div>
+
+        @Html.Partial("navBarKorisnik")
+        @if (Session["greskaPotvrdePredloga"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Greška!</strong> @Session["greskaPotvrdePredloga"]
+            </div>
+            Session["greskaPotvrdePredloga"] = null;
+        }
+        @if (Session["uspehPotvrdePredlogaDatum"] != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Uspeh!</strong> Prihvatili ste predlog borbe! Datum i vreme održavanja <b>@(String.Format("{0:d}", (DateTime)Session["uspehPotvrdePredlogaDatum"]))</b> u <b>@Session["uspehPotvrdePredlogaVreme"]</b>, klub <b>@Session["uspehPotvrdePredlogaNazivKluba"]</b>, adresa <b>@Session["uspehPotvrdePredlogaAdresaKluba"]</b>
+            </div>
+            Session["uspehPotvrdePredlogaDatum"] = null;
+            Session["uspehPotvrdePredlogaVreme"] = null;
+            Session["uspehPotvrdePredlogaNazivKluba"] = null;
+            Session["uspehPotvrdePredlogaAdresaKluba"] = null;
+
+        }
+
+        @if(Session["cekanje"] != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>@Session["cekanje"]</strong> Datum i vreme održavanja <b>@(String.Format("{0:d}", (DateTime)Session["uspehPotvrdePredlogaDatum1"]))</b> u <b>@Session["uspehPotvrdePredlogaVreme"]</b>, klub <b>@Session["uspehPotvrdePredlogaNazivKluba"]</b>, adresa <b>@Session["uspehPotvrdePredlogaAdresaKluba"]</b>
+            </div>
+
+            Session["cekanje"] = null;
+            Session["uspehPotvrdePredlogaDatum1"] = null;
+            Session["uspehPotvrdePredlogaVreme"] = null;
+            Session["uspehPotvrdePredlogaNazivKluba"] = null;
+            Session["uspehPotvrdePredlogaAdresaKluba"] = null;
+
+
+        }
+        @if (Session["odbijenPredlog"] != null)
+        {
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Odbili ste predlog borbe!</strong> (ID predloga: @Session["odbijenPredlog"]) 
+            </div>
+
+            Session["odbijenPredlog"] = null;
+        }
+
+        <div class="page-header" id="predloziBorbeHeader">
+            <h2>Predlozi borbi</h2>
+        </div>
+        @if (Model == null)
+        {
+            <p>lsdajflasdj</p>
+        }
+
+
+
+        <!-- -------------------------------PREDLOZI BORBI------------------------ -->
+        <!--Mora se prvo proveriti da li je model prazan (da li ima predloga borbe za tekuceg korisnika?)-->
+        @if (Model.Count() > 0)
+        {
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    @Html.Partial("PredlogBorbePrikaz", item)
+                }
+            </div>
+        }
+
+        @if (Model.Count() == 0)
+        {
+            <p>Trenutno nemate nijedan predlog borbe.</p>
+        }
+
+        <!-- -------------------------------PREDLOZI BORBI KRAJ------------------------ -->
+
+        <footer>
+            <div class="row">
+                <!--POČETAK GORNJEG DIJELA FOOTERA-->
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>O nama</b></h4>
+
+                    </div>
+                    <p>M.A.F.A. je na prvom mestu posrednik između zainteresovanih korisnika aplikacije, oba pola,  koji žele da deo svog slobodnog vremena provedu u ringu sa drugim, uparenim korisnicima aplikacije koji su pristali na borbu i sportskih/borilačkih klubova koji trebaju da pruže uslugu prostora za borbu, sudije i medicinskog osoblja.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Kontakt</b></h4>
+
+                    </div>
+                    <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                    <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Pratite nas na:</b></h4>
+                    </div>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-facebook fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-twitter fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-youtube fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-linkedin-in fa-3x"></i>
+                    </a>
+
+                </div>
+            </div><!--KRAJ GORNJEG DIJELA FOOTERA-->
+            <div class="panel-footer">
+                <!--POČETAK DONJEG DIJELA FOTERA-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li><a href="oNama.php">O nama</a></li>
+                            <li><a href="#">Uslovi korišćenja</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="kontakt.php">Kontakt</a></li>
+                            <li><a href="#">Mapa sajta</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-right">Copyright &copy; 2019 Mladen Zvjerac &#169;</p>
+                    </div>
+
+                </div>
+            </div><!--POČETAK DONJEG DIJELA FOTERA-->
+        </footer>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>

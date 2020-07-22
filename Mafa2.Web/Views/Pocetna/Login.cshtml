@@ -1,0 +1,157 @@
+﻿@model Mafa2.Web.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+    <div class="container-fluid">
+        <div class="background">
+            <div class="page-header">
+                <h1><a href="/Pocetna/Index"><img src="~/Content/img/borac2.jpg" width="1110" alt="log firme |Martial Arts Fighting Area"></a></h1>
+            </div>
+        </div>
+
+        @Html.Partial("navBarKorisnik") @*navigacioni bar za korisnika*@
+
+        <div class="row">
+            <div class="page-header">
+                <h2>Uloguj se</h2>
+            </div>
+
+
+            <!--FORMA ZA UNOS PODATAKA ZA LOGIN-->
+            @using (Html.BeginForm("LoginUser", "Pocetna"))
+            {
+        <div class="col-md-4">
+
+
+
+            <div class="form-group">
+                <label for="inputName">Username</label>
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Unesite korisničko ime" })
+            </div>
+            <div class="form-group">
+                <label for="inputSurname">Password</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Unesite lozinku" })
+            </div>
+            <br />
+            @*<a href="#" class="btn btn-danger" onclick="LoginUser()">ULOGUJ SE</a>*@
+            <button type="submit" class="btn btn-danger" name="btnLogin">Uloguj se</button>
+            <br>
+            @if (TempData["LoginFail"] != null)
+            {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Oops!</strong> @TempData["LoginFail"]
+        </div>
+        <div style="display: none;"> @TempData.Remove("LoginFail");</div>
+            }
+
+        </div>
+
+
+            }
+
+        </div>
+
+
+        <footer>
+            <div class="row">
+                <!--POČETAK GORNJEG DIJELA FOOTERA-->
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>O nama</b></h4>
+
+                    </div>
+                    <p>M.A.F.A. je na prvom mestu posrednik između zainteresovanih korisnika aplikacije, oba pola,  koji žele da deo svog slobodnog vremena provedu u ringu sa drugim, uparenim korisnicima aplikacije koji su pristali na borbu i sportskih/borilačkih klubova koji trebaju da pruže uslugu prostora za borbu, sudije i medicinskog osoblja.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Kontakt</b></h4>
+
+                    </div>
+                    <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                    <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Pratite nas na:</b></h4>
+                    </div>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-facebook fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-twitter fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-youtube fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-linkedin-in fa-3x"></i>
+                    </a>
+
+                </div>
+            </div><!--KRAJ GORNJEG DIJELA FOOTERA-->
+            <div class="panel-footer">
+                <!--POČETAK DONJEG DIJELA FOTERA-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li><a href="oNama.php">O nama</a></li>
+                            <li><a href="#">Uslovi korišćenja</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="kontakt.php">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-right">Copyright &copy; 2019 Mladen Zvjerac &#169;</p>
+                    </div>
+
+                </div>
+            </div><!--POČETAK DONJEG DIJELA FOTERA-->
+        </footer>
+    </div>
+@*</div>*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    var LoginUser = function () {
+        debugger
+        var data = $("#loginForma").serialize();
+
+        //Ajax poziv
+        $.ajax
+            ({
+                type: "Post",
+                url: "/Pocetna/LoginUser", //1. Ime kontrolera, 2. Ime funkcije u njemu
+                data: data,
+                success: function (response)
+                {
+                    debugger
+                    if (response == "fail")
+                    {
+                        window.location.href = "/Pocetna/Login";
+                        alert("Neuspješno logovanje!");
+                    }
+                    else if (response == "Administrator")
+                    {
+                        window.location.href = "/ZahtevZaBorbu/Index";
+                        alert("ARBEIT MACHT FREI!");
+                    }
+                    else if (response == "Prodavac")
+                    {
+                        window.location.href = "/Pocetna/Prodavac";
+                    }
+                    else if (response=="Korisnik")
+                    {
+                        window.location.href = "/Pocetna/Index";
+                        alert("Dobrodošli! Pritisnite OK dugme za ulazak na sajt.");
+                    }                    
+                }
+            })
+    }
+
+</script>

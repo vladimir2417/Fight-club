@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Kontakt";
+}
+
+    <div class="container-fluid">
+        <div class="background">
+            <div class="page-header">
+                <h1><a href="/Pocetna/Index"><img src="~/Content/img/borac2.jpg" width="1110" alt="log firme |Martial Arts Fighting Area"></a></h1>
+            </div>
+        </div>
+
+        @Html.Partial("navBarKorisnik") @*navigacioni bar za korisnika*@
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h2>Kontaktirajte nas</h2>
+                </div>
+                <!--FORMA ZA UNOS PODATAKA-->
+                <form>
+                    <div class="form-group">
+                        <label for="inputName">Vaše ime i prezime</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Ime i prezime">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Vaš e-mail</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="e-mail">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPhone">Vaš telefonski broj</label>
+                        <input type="tel" class="form-control" id="inputPhone" placeholder="Kontakt telefon">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSubject">Naslov vaše poruke</label>
+                        <input type="text" class="form-control" id="inputSubject" placeholder="Naslov">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputText">Tekst vaše poruke</label>
+                        <textarea class="form-control" id="inputText" placeholder="Tekst" rows="5"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger btn-lg btn-block">Pošaljite</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h2>Naše sjedište:</h2>
+                </div>
+                <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.440560197784!2d20.36885621575429!3d44.81258868470514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a6f67cbefbfe7%3A0xaedf21e7910f631e!2sNedeljka%20Gvozdenovi%C4%87a%2022%2C%20Beograd!5e0!3m2!1sen!2srs!4v1578824920490!5m2!1sen!2srs" width="727" height="407" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+        </div>
+
+
+        <footer>
+            <div class="row">
+                <!--POČETAK GORNJEG DIJELA FOOTERA-->
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>O nama</b></h4>
+
+                    </div>
+                    <p>M.A.F.A. je na prvom mestu posrednik između zainteresovanih korisnika aplikacije, oba pola,  koji žele da deo svog slobodnog vremena provedu u ringu sa drugim, uparenim korisnicima aplikacije koji su pristali na borbu i sportskih/borilačkih klubova koji trebaju da pruže uslugu prostora za borbu, sudije i medicinskog osoblja.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Kontakt</b></h4>
+
+                    </div>
+                    <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Nedeljka Gvozdenovića 22b, 11070 N.Beograd</p>
+                    <p><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +381 63 377745 </p>
+                    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> mz.tool2882@gmail.com</p>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="page-header">
+                        <h4><b>Pratite nas na:</b></h4>
+                    </div>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-facebook fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-twitter fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-youtube fa-3x"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger" role="button">
+                        <i class="fab fa-linkedin-in fa-3x"></i>
+                    </a>
+
+                </div>
+            </div><!--KRAJ GORNJEG DIJELA FOOTERA-->
+            <div class="panel-footer">
+                <!--POČETAK DONJEG DIJELA FOTERA-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li><a href="oNama.php">O nama</a></li>
+                            <li><a href="#">Uslovi korišćenja</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="kontakt.php">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-right">Copyright &copy; 2019 Mladen Zvjerac &#169;</p>
+                    </div>
+
+                </div>
+            </div><!--POČETAK DONJEG DIJELA FOTERA-->
+        </footer>
+    </div>
+@*</div>*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>

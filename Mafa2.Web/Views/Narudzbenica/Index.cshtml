@@ -1,0 +1,102 @@
+﻿@model Mafa2.Web.Models.LinqSql.Narudzbenica
+@using System.Globalization;
+@using Mafa2.Web.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="container-fluid">
+        <div class="background">
+            <div class="page-header">
+                <h1><a href="/Pocetna/Index"><img src="~/Content/img/borac2.jpg" width="1110" alt="log firme |Martial Arts Fighting Area"></a></h1>
+            </div>
+
+
+            <h2>Porudžbina primljena!</h2>
+
+            <p>Uspešno ste izvršili porudžbinu.</p>
+            <p>Proizvodi će biti isporučeni na sledeću adresu: <b>@Model.AdresaZaIsporuku, @Model.Grad @Model.ZipCode</b>
+            u narednih 2-5 radnih dana.</p>
+            <p>Hvala vam na ukazanom poverenju!</p>
+            <br />
+            <p>Detalji vaše narudžbenice:</p>
+
+            @{
+                DateTimeFormatInfo fmt = (new CultureInfo("hr-HR")).DateTimeFormat;
+            }
+            <p>Narudzbenica ID: <b>@Model.IDNarudzbenice</b>, primljena datuma <b>@Model.DatumVreme.Value.ToString("d", fmt)</b> u <b>@Model.DatumVreme.Value.ToString("hh:mm tt", fmt)</b> je prihvaćena. <br />
+             U nastavku možete pregledati naručene proizvode.</p>
+            <p>Naručeni proizvodi:</p>
+            <div class="table-responsive">
+                <table class="table tabelaStavke">
+
+                    <tr>
+                        <th width="6%">#</th>
+                        <th width="20%"></th> <!--za sliku proizvoda header -->
+                        <th width="25%">Naziv</th>
+                        <th width="10%">Količina</th>
+                        <th width="20%">Jedinična cena</th>
+                        <th>Ukupna cena stavke</th>
+                        <!--TO-DO: TESTIRANJE ISPISA (PRE TOGA FORMATIRATI PRIKAZ CENA)-->
+                    </tr>
+                    @{
+                        List<StavkaNarudzbenicaIspis> listaStavki = (List<StavkaNarudzbenicaIspis>)ViewBag.stavkeNarudzIspis;
+                    }
+
+                    @foreach (StavkaNarudzbenicaIspis stavka in listaStavki)
+                    {
+                        <tr>
+                            <td>@(stavka.RedniBr).</td>
+                            <td>
+                                <img src="@Url.Content(stavka.Slika)" alt="@stavka.AltSlika" width="70" height="70">
+                            </td>
+                            <td>@stavka.Naziv</td>
+                            <td>Količina: @stavka.IzabranaKolicina</td>
+                            @if (stavka.Popust > 0)
+                            {
+                                <td>@String.Format("{0:N2}", stavka.JedinicnaCena) RSD (Popust: <b>-@stavka.Popust%</b>)</td>
+
+                            }
+                            else
+                            {
+                                <td>@String.Format("{0:N2}", stavka.JedinicnaCena) RSD</td>
+                            }
+                            <td>@String.Format("{0:N2}", stavka.UkupnaCenaStavke) RSD</td>
+                        </tr>
+
+                    }
+                    <tr id="poslednjiRed">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Ukupno:<br><b>@(String.Format("{0:N2}", Model.TotalCena)) RSD</b><br>(+250 din za cenu dostave)</td>
+                    </tr>
+                </table>
+                <br />
+                <p style="font-size: 15px;">Vratite se na @(Html.ActionLink("početnu stranu", "Index", "Pocetna", null, new { style = "font-size: 15px;" })).</p>
+                @* TO-DO: ISPRAZNITI MALO U BAZI TABELU NARUDZBENICE I STAVKE NARUDZBENICE,
+                   I MOZDA UBACITI KORISNIKA U TABELU NARUDZBENICE, ZATO STO TREBA DA SE ZNA
+                   KO JE NARUCIO NARUDZBENICU!!!!!, STAVITI DA OVDE U ISPISU NARUDZBENICE TAKODJE
+                    STOJI MOZDA HVALA, PA IME KORISNIKA, I U DETALJIMA DA STOJI IME I PREZIME KORISNIKA*@
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
